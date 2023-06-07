@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
 .custom-container {
-    @apply  w-[85%] mx-auto
+    @apply  md:w-[80%] sm:w-full mx-auto
   }

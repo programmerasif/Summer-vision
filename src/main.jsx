@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 
 import {
@@ -8,10 +7,13 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import { router } from './components/Router.jsx';
+import AuthProviders from './providers/AuthProviders.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+   <AuthProviders>
+   <RouterProvider router={router} />
+   </AuthProviders>
   </React.StrictMode>,
 )
