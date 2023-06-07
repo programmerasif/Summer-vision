@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
 
 const Register = () => {
@@ -42,7 +43,7 @@ const Register = () => {
     return (
         <div>
             <div className="hero min-h-screen bg-base-200 ">
-  <div className="hero-content flex-col lg:flex-row gap-20">
+  <div className="hero-content flex-col lg:flex-row gap-20 mt-20">
     <div className="text-center lg:text-left md:w-[700px] sm:[w-200px]">
     <Lottie animationData={loginAnemation} loop={true} />
     </div>
