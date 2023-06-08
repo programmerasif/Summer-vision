@@ -17,8 +17,8 @@ const Navbr = () => {
           });
     }
     return (
-        <div >
-            <div className="navbar bg-gray-200 md:px-16 sm:px-1 z-10  fixed">
+        <div className='mt-0'>
+            <div className="navbar bg-gray-200 md:px-16 sm:px-1 z-10  top-0 fixed">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,8 +45,8 @@ const Navbr = () => {
                     {/* desktop */}
                     <ul className="menu menu-horizontal px-1 gap-8 justify-center items-center">
 
-                        <NavLink><li> Home</li></NavLink>
-                        <NavLink><li>Instructors</li> </NavLink>
+                        <NavLink to='/'><li> Home</li></NavLink>
+                        <NavLink to='/instructor'><li>Instructors</li> </NavLink>
                         <NavLink><li>Classes</li> </NavLink>
                         {
                             user ? <><NavLink><li onClick={handelLogout}>Log-Out</li> </NavLink></> : <><NavLink to='login'><li>Log-In</li> </NavLink> <NavLink to='register'><li>Register</li> </NavLink></>

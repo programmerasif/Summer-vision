@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
+import Weve from "../Home/Marketing/Weve";
 
 const Register = () => {
   const {user,signUp} = useContext(AuthContext)
@@ -42,8 +43,8 @@ const Register = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200 ">
-  <div className="hero-content flex-col lg:flex-row gap-20 mt-20">
+            <div className="hero min-h-screen bg-base-200 relative">
+  <div className="hero-content flex-col lg:flex-row gap-20 mt-20 mb-32">
     <div className="text-center lg:text-left md:w-[700px] sm:[w-200px]">
     <Lottie animationData={loginAnemation} loop={true} />
     </div>
@@ -104,6 +105,10 @@ const Register = () => {
         <button className="btn"> <span className="text-3xl"><FcGoogle /></span>Google</button>
       </form>
     </div>
+    
+  </div>
+  <div className="absolute bottom-0">
+  <Weve></Weve>
   </div>
 </div>
         </div>

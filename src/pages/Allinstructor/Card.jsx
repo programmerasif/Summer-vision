@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CoachesCard = ({ data }) => {
+const Card = ({ data }) => {
     return (
         <div className="">
             <div className="card card-compact md:w-96 sm:w-auto bg-base-100 shadow-xl ">
@@ -10,6 +10,7 @@ const CoachesCard = ({ data }) => {
                     <p>Number of Student : {data.category} </p>
                     <p>Number of Student : {data.studentNumber} </p>
                     <p>Type : {data.type} </p>
+                    <p>Email : {data.email} </p>
 
                 </div>
             </div>
@@ -17,4 +18,4 @@ const CoachesCard = ({ data }) => {
     );
 };
 
-export default CoachesCard;
+export default Card;

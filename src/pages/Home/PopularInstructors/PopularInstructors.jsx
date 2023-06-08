@@ -10,7 +10,7 @@ const PopularInstructors = () => {
     useEffect(() =>{
         fetch('http://localhost:5000/populer-coaches')
         .then(res => res.json())
-        .then(data => setInstructors(data))
+        .then(data => setInstructors(data.slice(0,6)))
     },[])
 console.log(instructors);
     return (
