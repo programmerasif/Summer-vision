@@ -4,7 +4,7 @@ import Weve from './Weve';
 const Marketing = () => {
     return (
         <>
-        {/* <div className='mt-20 mb-[0]'>
+        <div className='mt-20 mb-[0]'>
         <Weve />
         
         <div className='bg-[#FFBF23] mt-[0]'>
@@ -21,7 +21,7 @@ const Marketing = () => {
                 </div>
                </div>
                </div>
-        </div> */}
+        </div>
         </>
     );
 };
