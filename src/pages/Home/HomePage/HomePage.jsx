@@ -7,6 +7,8 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import TopClasses from "../TopClasses/TopClasses";
+import Marketing from "../Marketing/Marketing";
+import PopularInstructors from "../PopularInstructors/PopularInstructors";
 
 const HomePage = () => {
     return (
@@ -64,6 +66,10 @@ const HomePage = () => {
 
             {/* Our top classes  */}
             <TopClasses />
+            {/* Marketing */}
+            <Marketing></Marketing>
+            {/* PopularInstructors */}
+            <PopularInstructors />
         </div>
     );
 };

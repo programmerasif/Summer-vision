@@ -1,4 +1,4 @@
-import Wev from '../assets/Wave.svg'
+import Wev from '../../../assets/Wave.svg'
 
 const Weve = () => {
     return (
