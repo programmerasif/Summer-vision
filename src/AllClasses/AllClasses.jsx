@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
+
 import useClasses from "../Hooks/useClasses";
 import HeadingTitle from "../components/Share/HeadingTitle";
 import Weve from "../pages/Home/Marketing/Weve";
 import ClassCard from "./ClassCard";
-import { AuthContext } from "../providers/AuthProviders";
+
 
 const AllClasses = () => {
    const [clas, refatch] = useClasses()
