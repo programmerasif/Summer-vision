@@ -10,7 +10,7 @@ import Weve from "../Home/Marketing/Weve";
 import HeadingTitle from "../../components/Share/HeadingTitle";
 
 const Login = () => {
-  const { login } = useContext(AuthContext)
+  const { login,googleSignin } = useContext(AuthContext)
   const [err, setError] = useState()
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -39,6 +39,18 @@ const Login = () => {
         setError('Email or Password is worng ')
       });
   };
+
+  const handelGoogleLogin = () =>{
+    googleSignin()
+    .then((result) => {
+    
+      const user = result.user;
+      console.log(user);
+    }).catch((error) => {
+      const err = error.message;
+      console.log(err);
+    });
+  }
   return (
     <div>
       
@@ -77,7 +89,7 @@ const Login = () => {
               </div>
               <p>Dont have an Account?<Link to='/register'><span className="text-blue-700">Register</span></Link> </p>
               <div className="divider">OR</div>
-              <button className="btn "> <span className="text-3xl"><FcGoogle /></span> Google</button>
+              <button className="btn " onClick={handelGoogleLogin}> <span className="text-3xl"><FcGoogle /></span> Google</button>
             </form>
           </div>
         </div>

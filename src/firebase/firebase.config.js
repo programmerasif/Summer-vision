@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-console.log(import.meta.env.Vite_apiKey);
+
 const firebaseConfig = {
   apiKey: "AIzaSyBvm3YvUjQdD4fr5Jvgw2K8BO_Xsb6Crw0",
   authDomain: "summer-vision.firebaseapp.com",

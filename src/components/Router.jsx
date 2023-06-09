@@ -4,6 +4,9 @@ import HomePage from "../pages/Home/HomePage/HomePage";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Allinstructor from "../pages/Allinstructor/Allinstructor";
+import AllClasses from "../AllClasses/AllClasses";
+import Dashboard from "./Layout/DashBoard/Dashboard";
+
 
 
 export const router = createBrowserRouter([
@@ -28,8 +31,18 @@ export const router = createBrowserRouter([
           path: 'instructor',
           element:<Allinstructor />
         }
+        ,
+        {
+          path: 'allclasses',
+          element:<AllClasses />
+        }
+        
       ]
     },
+    {
+      path:'dashboard',
+      element: <Dashboard />
+    }
   ]);
   
 

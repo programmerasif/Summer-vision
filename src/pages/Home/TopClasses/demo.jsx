@@ -82,3 +82,99 @@
     "type": "Indoor Game"
   }
 ]
+
+
+
+[
+  {
+    "image": "image1.jpg",
+    "name": "Soccer Training",
+    "TrainerName": "John Doe",
+    "email": "john.doe@example.com",
+    "AvailableSeats": 10,
+    "Price": 99.99,
+    "approve" : "ok"
+  },
+  {
+    "image": "https://i.ibb.co/mvyVs7q/basketball.jpg",
+    "name": "Basketball",
+    "TrainerName": "San Antonio",
+    "email": "sanantonio@gmail.com",
+    "AvailableSeats": 8,
+    "Price": 79.99,
+    "approve" : "ok"
+  },
+  {
+    "image": "https://i.ibb.co/7V4vhjK/cricket.jpg",
+    "Name": "Tennis",
+    "TrainerName": "Patrick Mouratoglou",
+    "email": "mike.johnson@example.com",
+    "AvailableSeats": 6,
+    "Price": 59.99,
+    "approve" : "ok"
+  },
+  {
+    "image": "https://i.ibb.co/QvfVbQ6/golf.jpg",
+    "Name": "Golf",
+    "TrainerName": "Luke Calcatera ",
+    "email": "lukecalcatera@example.com",
+    "AvailableSeats": 12,
+    "Price": 129.99,
+    "approve" : "ok"
+  },
+  {
+    "image": "https://i.ibb.co/Kmbw9ZG/swiming.webp",
+    "Name": "Swimming ",
+    "TrainerName": "Jason Mitchell",
+    "email": "jasonmitchell@example.com",
+    "AvailableSeats": 5,
+    "Price": 89.9,
+    "approve" : "not-ok"
+  },
+  {
+    "image": "https://i.ibb.co/p1nSNQw/bassbal.webp",
+    "Name": "Baseball",
+    "TrainerName": "Daniel Wilson",
+    "email": "davidrodriguez@gmail.com",
+    "AvailableSeats": 15,
+    "Price": 109.99,
+    "approve" : "ok"
+  },
+  {
+    "image": "https://i.ibb.co/sCC3bX0/Volleyball.jpg",
+    "Name": "Volleyball",
+    "TrainerName": "Sarah Mitchell",
+    "email": "sarah.mitchell@example.com",
+    "AvailableSeats": 10,
+    "Price": 89.99,
+    "approve" : "ok"
+  },
+  {
+    "image": "https://i.ibb.co/vd1pmKd/boxing.jpg",
+    "Name": "Boxing ",
+    "TrainerName": "James Anderson",
+    "email": "james.anderson@example.com",
+    "AvailableSeats": 8,
+    "Price": 79.99,
+    "approve" : "not-ok"
+  },
+  {
+    "Image": "image9.jpg",
+    "Name": "Rugby ",
+    "TrainerName": "Matthew Roberts",
+    "InstructorEmail": "matthew.roberts@example.com",
+    "AvailableSeats": 10,
+    "Price": 99.99,
+    "approve" : "ok"
+  },
+  {
+    "Image": "image10.jpg",
+    "Name": "Athletic ",
+    "TrainerName": "Alex Turner",
+    "InstructorEmail": "alex.turner@example.com",
+    "AvailableSeats": 12,
+    "Price": 119.99,
+    "approve" : "ok"
+
+  }
+]

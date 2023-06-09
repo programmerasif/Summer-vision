@@ -47,12 +47,12 @@ const Navbr = () => {
 
                         <NavLink to='/'><li> Home</li></NavLink>
                         <NavLink to='/instructor'><li>Instructors</li> </NavLink>
-                        <NavLink><li>Classes</li> </NavLink>
+                        <NavLink to='/allclasses'><li>Classes</li> </NavLink>
                         {
                             user ? <><NavLink><li onClick={handelLogout}>Log-Out</li> </NavLink></> : <><NavLink to='login'><li>Log-In</li> </NavLink> <NavLink to='register'><li>Register</li> </NavLink></>
                         }
                         {
-                            user ? <><NavLink><li>Dashboard</li> </NavLink>
+                            user ? <><NavLink to='dashboard'><li>Dashboard</li> </NavLink>
                                 <NavLink><img src={pic} alt="" className='w-8 rounded-full' /> </NavLink></> :
                                 <></>
                         }
