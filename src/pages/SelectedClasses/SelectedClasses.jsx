@@ -6,31 +6,36 @@ const SelectedClasses = () => {
     const [Myclas,refetch] = useMyclasses()
     
     const handelDelet = (id) =>{
-        fetch(`http://localhost:5000/myclasses/${id}`,{
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/myclasses/${id}`,{
             method:'DELETE'
         })
         .then(res => res.json())
-        .then(data => {
+        .then(() => {
             refetch()
-            console.log(data)
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
-                }
-              })
+            
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
         })
+
+              
+            }
+          })
+        
         
     }
    
@@ -39,7 +44,7 @@ const SelectedClasses = () => {
             <HeadingTitle heading='My Selected classes' />
 
           <div className="flex items-center justify-start  gap-5 mt-5 mb-3 ml-2">
-            <h6 className="font-semibold text-3xl text-[#FFBF23] ">Make your payment </h6>
+            <h6 className="font-semibold md:text-3xl sm:text-sm text-[#FFBF23] ">Make your payment </h6>
             
             <button className="btn btn-sm">Pay</button>
           </div>
@@ -53,13 +58,13 @@ const SelectedClasses = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                                <th>
+                                <th className="hidden sm:hidden md:block">
                                     Index
                                 </th>
-                                <th>Image</th>
+                                <th >Image</th>
                                 <th>Name</th>
                                 <th>Price</th>
-                                <th>Trainer Name</th>
+                                <th className="hidden sm:hidden md:block">Trainer Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,12 +72,12 @@ const SelectedClasses = () => {
                             {/* row 1 */}
                             {
                                 Myclas?.map((d, index) => <tr key={d._id}>
-                                    <td className="">
+                                    <td className="hidden sm:hidden md:block">
                                         {index + 1}
                                     </td>
                                     <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
+                                        <div className="flex items-center space-x-3 ">
+                                            <div className="avatar ">
                                                 <div className="mask mask-squircle w-12 h-12">
                                                     <img src={d.image} alt="Avatar Tailwind CSS Component" />
                                                 </div>
@@ -85,9 +90,9 @@ const SelectedClasses = () => {
                                     <td >
                                         {d.price}$
                                     </td>
-                                    <td className="">{d.trainerName}</td>
+                                    <td className="hidden sm:hidden md:block">{d.trainerName}</td>
                                     <th>
-                                        <button className="btn bg-red-500 text-[#000000] btn-xs" onClick={() =>handelDelet(d._id)}>Delete</button>
+                                        <button className="btn bg-red-600 text-white btn-xs" onClick={() =>handelDelet(d._id)}>Delete</button>
                                     </th>
                                 </tr>)
                             }
