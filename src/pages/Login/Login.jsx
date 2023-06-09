@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import Weve from "../Home/Marketing/Weve";
-import HeadingTitle from "../../components/Share/HeadingTitle";
 
 const Login = () => {
   const { login,googleSignin } = useContext(AuthContext)

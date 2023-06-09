@@ -11,7 +11,7 @@ const Allinstructor = () =>{
         .then(res => res.json())
         .then(data => setInstructors(data))
     },[])
-console.log(instructors);
+
     return (
        <div>
          <div className=" custom-container mt-24 mb-8">

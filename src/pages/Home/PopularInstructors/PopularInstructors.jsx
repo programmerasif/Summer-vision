@@ -12,7 +12,7 @@ const PopularInstructors = () => {
         .then(res => res.json())
         .then(data => setInstructors(data.slice(0,6)))
     },[])
-console.log(instructors);
+    
     return (
         <div className="mt-20 custom-container">
             <HeadingTitle heading='Our Popular Instructors'

@@ -19,12 +19,12 @@ const AuthProviders = ({children}) => {
     useEffect(() =>{
       const unsubscribe =   onAuthStateChanged(auth,(currentUser) =>{
             setUser(currentUser);
-            console.log(currentUser);
             setloading(false)
         })
         return unsubscribe
     },[])
     const googleSignin = () =>{
+        setloading(true)
         return signInWithPopup(auth,googleProvider)
     }
     const signUp = (email,password) =>{
