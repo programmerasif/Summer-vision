@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import { FcGoogle } from "react-icons/fc";
+import Swal from 'sweetalert2'
 import Weve from "../Home/Marketing/Weve";
+import SocialLogin from "../../components/Share/SocialLogin";
 
 const Login = () => {
-  const { login,googleSignin } = useContext(AuthContext)
+  const { login} = useContext(AuthContext)
   const [err, setError] = useState()
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -23,9 +23,9 @@ const Login = () => {
         console.log(user);
         if (user) {
           Swal.fire({
-            position: 'center',
+            position: 'top-end',
             icon: 'success',
-            title: 'Log-In successfull',
+            title: 'Your work has been saved',
             showConfirmButton: false,
             timer: 1500
           })
@@ -39,17 +39,7 @@ const Login = () => {
       });
   };
 
-  const handelGoogleLogin = () =>{
-    googleSignin()
-    .then((result) => {
-    
-      const user = result.user;
-      console.log(user);
-    }).catch((error) => {
-      const err = error.message;
-      console.log(err);
-    });
-  }
+ 
   return (
     <div>
       
@@ -60,7 +50,7 @@ const Login = () => {
             <Lottie animationData={loginAnemation} loop={true} />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
 
               <div className="form-control">
                 <label className="label">
@@ -87,9 +77,11 @@ const Login = () => {
                 <input type="submit" value="Register" className="btn" />
               </div>
               <p>Dont have an Account?<Link to='/register'><span className="text-blue-700">Register</span></Link> </p>
-              <div className="divider">OR</div>
-              <button className="btn " onClick={handelGoogleLogin}> <span className="text-3xl"><FcGoogle /></span> Google</button>
+             
+              {/* <button className="btn " onClick={handelGoogleLogin}> <span className="text-3xl"><FcGoogle /></span> Google</button> */}
+             
             </form>
+            <SocialLogin />
           </div>
         </div>
 

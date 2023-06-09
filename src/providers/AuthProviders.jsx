@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged,signInWithEmailAndPassword ,signOut,createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile,  } from "firebase/auth";
 import app from '../firebase/firebase.config';
 
 
@@ -9,41 +9,50 @@ export const AuthContext = createContext(null);
 
 export const auth = getAuth(app)
 
-const AuthProviders = ({children}) => {
-    const [user,setUser] = useState(null)
-    const [loading ,setloading] = useState(true)
+const AuthProviders = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [loading, setloading] = useState(true)
 
     const googleProvider = new GoogleAuthProvider();
-   
 
-    useEffect(() =>{
-      const unsubscribe =   onAuthStateChanged(auth,(currentUser) =>{
+
+    
+    const googleSignin = () => {
+        setloading(true)
+        return signInWithPopup(auth, googleProvider)
+    }
+    const signUp = (email, password) => {
+        setloading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+    
+    const login = (email, password) => {
+        setloading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const profileUpdate = (name,photoUrl) =>{
+        return updateProfile(auth.currentUser, {
+            displayName:name, photoURL:photoUrl
+          })
+    }
+    const logOut = () => {
+        return signOut(auth)
+    }
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setloading(false)
         })
         return unsubscribe
-    },[])
-    const googleSignin = () =>{
-        setloading(true)
-        return signInWithPopup(auth,googleProvider)
-    }
-    const signUp = (email,password) =>{
-        setloading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
-    }
-    const login = (email,password) =>{
-        setloading(true)
-        return signInWithEmailAndPassword(auth,email,password)
-    }
-    const logOut = () =>{
-        return signOut(auth)
-    }
+    }, [])
     const authInfo = {
         user,
         loading,
         googleSignin,
         signUp,
         login,
+        profileUpdate,
         logOut
     }
     return (

@@ -4,6 +4,7 @@ import Navbr from '../../../pages/Navebr/Navbr';
 import Footer from '../../../pages/Footer/Footer';
 
 const Dashboard = () => {
+    const admin = true
     return (
         <div>
             <Navbr />
@@ -20,6 +21,7 @@ const Dashboard = () => {
     <ul className="menu p-4 w-80 h-full bg-gray-200 text-base-content">
       {/* Sidebar content here */}
       <li><Link to='/dashboard/selectedClasses'>My Selected classes </Link></li>
+      <li><Link to='/dashboard/allUsers'>All users </Link></li>
       {/* <li><a>Sidebar Item 2</a></li> */}
     </ul>
   

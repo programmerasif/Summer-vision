@@ -4,38 +4,44 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import Swal from "sweetalert2";
+
 import Weve from "../Home/Marketing/Weve";
+import SocialLogin from "../../components/Share/SocialLogin";
 
 const Register = () => {
-  const {user,signUp} = useContext(AuthContext)
-  console.log(user);
+  const {user,signUp,profileUpdate} = useContext(AuthContext)
+  
   
   const { register,handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-
-    console.log(data)
+          <input type="text" {...register("name",{required: true})} placeholder="text" className="input input-bordered" />
+    // console.log("dataname", data.name);
+    // console.log("dataname",data.photoUrl);
     signUp(data.email,data.password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
+    .then((d) => {
+      const user = d.user;
       console.log(user);
-      if (user) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Sign-In successfull',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-      // ...
+      profileUpdate(data.name,data.photoUrl)
+      .then(() => {
+        // Profile updated!
+        // sending all users data into data base
+        const person = { name: user?.displayName, email: user?.email }
+        fetch(`http://localhost:5000/all-user`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(person)
+      })
+      .then(res => res.json())
+      .then(() =>{})
+      }).catch((error) => {
+        // An error occurred
+        // ...
+        console.log(error);
+      });
     })
     .catch((error) => {
       const errorMessage = error.message;
       console.log(errorMessage);
-      // ..
     });
 
   };
@@ -50,7 +56,7 @@ const Register = () => {
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       
-      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Name</span>
@@ -101,9 +107,8 @@ const Register = () => {
          <input type="submit" value="Register" className="btn"/>
         </div>
         <p>Have an Account?<Link to='/login'><span className="text-blue-700">Login</span></Link> </p>
-        <div className="divider">OR</div>
-        <button className="btn"> <span className="text-3xl"><FcGoogle /></span>Google</button>
       </form>
+      <SocialLogin ></SocialLogin>
     </div>
     
   </div>

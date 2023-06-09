@@ -1,11 +1,37 @@
+import Swal from "sweetalert2";
 import HeadingTitle from "../../components/Share/HeadingTitle";
 import useMyclasses from "../../Hooks/useMyclasses";
 
 const SelectedClasses = () => {
-    const [Myclas,refatch] = useMyclasses()
+    const [Myclas,refetch] = useMyclasses()
     
     const handelDelet = (id) =>{
-        console.log(id);
+        fetch(`http://localhost:5000/myclasses/${id}`,{
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            refetch()
+            console.log(data)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                }
+              })
+        })
+        
     }
    
     return (

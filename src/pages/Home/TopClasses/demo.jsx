@@ -178,3 +178,16 @@
 
   }
 ]
+
+
+
+
+  // sending all users data into data base
+  const person = { name: user?.displayName, email: user?.email }
+  fetch(`http://localhost:5000/all-user`,{
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(person)
+})
+.then(res => res.json())
+
