@@ -1,35 +1,47 @@
 import Lottie from "lottie-react";
 import loginAnemation from "../../assets/145702-login-lottie-yellow.json";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link } from "react-router-dom";
 
 import Weve from "../Home/Marketing/Weve";
 import SocialLogin from "../../components/Share/SocialLogin";
+import Swal from "sweetalert2";
+import useAxios from "../../Hooks/useAxios";
 
 const Register = () => {
   const { user, signUp, profileUpdate } = useContext(AuthContext)
+  const [conPass,setConpass] =useState(true)
+  const [axiosSecure] = useAxios()
 
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
     <input type="text" {...register("name", { required: true })} placeholder="text" className="input input-bordered" />
-    signUp(data.email, data.password)
+    const pass = data.password;
+    const conPass = data.confirmPass 
+
+    if (pass != conPass) {
+      setConpass(false)
+    }else{
+      setConpass(true)
+      signUp(data.email, data.password)
       .then((d) => {
         const user = d.user;
-        console.log(user);
         profileUpdate(data.name, data.photoUrl)
           .then(() => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Registered succesfull',
+              showConfirmButton: false,
+              timer: 1500
+            })
             // Profile updated!
             // sending all users data into data base
-            const person = { name: user?.displayName, email: user?.email }
-            fetch(`http://localhost:5000/all-user`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(person)
-            })
-              .then(res => res.json())
+            const person = { name: user?.displayName, email: user?.email, role : 'user' }
+            axiosSecure.post(`/all-user`,person)
               .then(() => { })
           }).catch((error) => {
             // An error occurred
@@ -40,6 +52,7 @@ const Register = () => {
         const errorMessage = error.message;
         console.log(errorMessage);
       });
+    }
 
   };
 
@@ -86,6 +99,7 @@ const Register = () => {
                 </label>
                 <input type="password" {...register("confirmPass", { required: true })} placeholder="password" className="input input-bordered" />
                 {errors.confirmPass && <span className="text-red-500">Password is required</span>}
+                {!conPass && <p className="text-red-500">Password and Confirm password are not same </p>}
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Confirm password?</a>
                 </label>

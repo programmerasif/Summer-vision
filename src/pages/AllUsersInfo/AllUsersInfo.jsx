@@ -1,15 +1,32 @@
-import { useEffect, useState } from "react";
 import HeadingTitle from "../../components/Share/HeadingTitle";
+import useAllusers from "../../Hooks/useAllusers";
+import useAxios from "../../Hooks/useAxios";
 
 
 const AllUsersInfo = () => {
-    const [users ,setUser] = useState([])
-    useEffect(() =>{
-        fetch(`http://localhost:5000/all-user`)
-        .then(res => res.json())
-        .then(data => setUser(data))
-    },[])
-    console.log(users);
+    const [users,refetch] = useAllusers()
+    const [axiosSecure] = useAxios()
+    const makeadmin = (id) =>{
+      axiosSecure.patch(`/user/admin/${id}`,{role : 'admin'})
+    .then(data => {
+      
+      if (data.data.modifiedCount) {
+        refetch()
+      }
+      console.log(data)})
+    }
+    const makeInstractor = (id) =>{
+    axiosSecure.patch(`/user/admin/${id}`, {role : 'instractor'})
+    .then(data => {
+      
+      if (data.data.modifiedCount) {
+        refetch()
+      }
+      console.log(data.data)})
+    }
+
+
+    
     return (
         <div className="w-full ms-2">
             <HeadingTitle heading={'All Users'}/>
@@ -21,7 +38,7 @@ const AllUsersInfo = () => {
       <th className="hidden sm:hidden md:block">Index</th>
       <th className="text-start">Name</th>
       <th className="hidden sm:hidden md:block">Email</th>
-      <th className="text-start">Action</th>
+      <th >Action</th>
      
         
       </tr>
@@ -35,16 +52,19 @@ const AllUsersInfo = () => {
             <td>
               {user.name}
             </td>
-            <td>
-              <span className="badge badge-ghost badge-sm hidden sm:hidden md:block">{user.email}</span>
+            <td className="hidden sm:hidden md:block">
+              <span className="badge badge-ghost badge-sm ">{user.email}</span>
             </td>
             <td>
             <div className="flex items-start text-start ">
-                <div className="btn btn-xs ">
-                  Make Instructor
-                </div>
-                <div className="btn btn-xs">
-                    Make Admin
+            {
+                  user?.role == 'instractor' ? <div className="rounded btn-xs bg-green-600 text-white" >Instractor</div>: <div className="btn btn-xs bg-red-600 text-white"  onClick={() => makeInstractor(user._id)}>Make Instractor </div>
+                }
+                
+                <div>
+                {
+                  user?.role == 'admin' ? <div className="rounded btn-xs bg-green-600 text-white" >Admin</div>: <div className="btn btn-xs bg-red-600 text-white"  onClick={() => makeadmin(user._id)}>Make admin </div>
+                }
                 </div>
               </div>
             </td>

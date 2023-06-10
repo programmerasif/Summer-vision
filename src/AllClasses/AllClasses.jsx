@@ -1,4 +1,5 @@
 
+import useAxios from "../Hooks/useAxios";
 import useClasses from "../Hooks/useClasses";
 import HeadingTitle from "../components/Share/HeadingTitle";
 import Weve from "../pages/Home/Marketing/Weve";
@@ -6,6 +7,7 @@ import ClassCard from "./ClassCard";
 
 
 const AllClasses = () => {
+    
    const [clas, refatch] = useClasses()
    
     return (

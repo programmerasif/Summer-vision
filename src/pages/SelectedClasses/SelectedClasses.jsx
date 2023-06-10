@@ -1,10 +1,12 @@
 import Swal from "sweetalert2";
 import HeadingTitle from "../../components/Share/HeadingTitle";
 import useMyclasses from "../../Hooks/useMyclasses";
+import useAxios from "../../Hooks/useAxios";
 
 const SelectedClasses = () => {
     const [Myclas,refetch] = useMyclasses()
-    
+    console.log(Myclas);
+    const [axiosSecure] = useAxios()
     const handelDelet = (id) =>{
 
         Swal.fire({
@@ -18,10 +20,7 @@ const SelectedClasses = () => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/myclasses/${id}`,{
-            method:'DELETE'
-        })
-        .then(res => res.json())
+                axiosSecure.delete(`/myclasses/${id}`)
         .then(() => {
             refetch()
             

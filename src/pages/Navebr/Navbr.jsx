@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/summervision.png'
-import pic from '../../assets/formal.jpg'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 
@@ -34,7 +33,7 @@ const Navbr = () => {
                             }
                             {
                                 user ? <><NavLink><li>Dashboard</li> </NavLink>
-                                    <NavLink><img src={pic} alt="" className='w-8 rounded-full' /> </NavLink></> :
+                                    <NavLink><img src={user.photoURL} alt="" className='w-8 rounded-full' /> </NavLink></> :
                                     <></>
                             }
                         </ul>
@@ -53,7 +52,7 @@ const Navbr = () => {
                         }
                         {
                             user ? <><NavLink to='dashboard'><li>Dashboard</li> </NavLink>
-                                <NavLink><img src={pic} alt="" className='w-8 rounded-full' /> </NavLink></> :
+                                <NavLink><img src={user.photoURL} alt="" className='w-8 rounded-full' /> </NavLink></> :
                                 <></>
                         }
 

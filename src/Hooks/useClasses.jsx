@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import { useContext } from 'react';
-import AuthProviders, { AuthContext } from '../providers/AuthProviders';
+import useAxios from './useAxios';
+
 
 
 const useClasses = () => {
-    const {user} = useContext(AuthContext)
+    const [axiosSecure] = useAxios()
     
     const { refetch, data: clas = []  } = useQuery({
         queryKey: ['class'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/allClasses')
-            return res.json()
+            const res = await axiosSecure.get('/allClasses')
+            return res.data
+            // return res.json()
         }
       })
       return [clas, refetch]

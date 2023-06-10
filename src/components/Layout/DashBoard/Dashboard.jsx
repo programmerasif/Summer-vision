@@ -2,9 +2,19 @@ import { Link, Outlet } from 'react-router-dom';
 import Navbr from '../../../pages/Navebr/Navbr';
 import Footer from '../../../pages/Footer/Footer';
 import { FaBars } from "react-icons/fa";
+import useAdmin from '../../../Hooks/useAdmin';
+import useUser from '../../../Hooks/useUser';
+import useInstructor from '../../../Hooks/useInstructor';
+
 
 const Dashboard = () => {
-    const admin = true
+  const [isAdmin] = useAdmin()
+  const [isUser] = useUser()
+  const[isInstractor] = useInstructor()
+  
+  
+  
+    // const users = {role : "admin"}
     return (
         <div>
             <Navbr />
@@ -24,11 +34,24 @@ const Dashboard = () => {
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-80 h-full bg-gray-200 text-base-content">
       {/* Sidebar content here */}
-      <li><Link to='/dashboard/selectedClasses'>My Selected classes </Link></li>
       {
-        admin && <li><Link to='/dashboard/allUsers'>All users </Link></li>
+       isUser  && <li><Link to='/dashboard/selectedClasses'>My Selected classes </Link></li>
       }
-      {/* <li><a>Sidebar Item 2</a></li> */}
+      {
+       isUser  && <li><Link to='/dashboard/selectedClasses'>My Enrolled Classes </Link></li>
+      }
+      {
+       isAdmin && <li><Link to='/dashboard/allUsers'>Manage Users </Link></li>
+      }
+      {
+       isAdmin && <li><Link to='/dashboard/manageClasses'>Manage classes </Link></li>
+      }
+      {
+       isInstractor && <li><Link to='/dashboard/addMyclass'>Add Class </Link></li>
+      }
+      {
+        isInstractor && <li><Link to='/dashboard/myAddedClasses'> My Add class </Link></li>
+      }
     </ul>
   
   </div>

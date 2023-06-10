@@ -1,27 +1,30 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 import { FcGoogle } from 'react-icons/fc';
+import Swal from 'sweetalert2';
+import useAxios from '../../Hooks/useAxios';
 
 const SocialLogin = () => {
-    const {googleSignin} = useContext(AuthContext)
+  const [axiosSecure] = useAxios()
+    const {googleSignin,setloading} = useContext(AuthContext)
     const handelGoogleLogin = () =>{
        
         googleSignin()
         .then((result) => {
-        
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'LogIn Succesfull',
+            showConfirmButton: false,
+            timer: 1500
+          })
           const user = result.user;
-          
-
           if (user.email) {
+            setloading(true)
               // sending all users data into data base
-              const person = { name: user?.displayName, email: user?.email }
-              fetch(`http://localhost:5000/all-user`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(person)
-            })
-            .then(res => res.json())
-            .then(() =>{})
+              const person = { name: user?.displayName, email: user?.email, role : 'user'}
+              axiosSecure.post('/all-user',person)
+            .then(res => console.log(res.data))
           }
         }).catch((error) => {
           const err = error.message;

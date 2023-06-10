@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import ClassCard from "./ClassCard";
 import HeadingTitle from "../../../components/Share/HeadingTitle";
+import useAxios from "../../../Hooks/useAxios";
 
 
 const TopClasses = () => {
     const [classes,setClasses] = useState([])
-
+    const [axiosSecure] = useAxios()
     useEffect(() =>{
-        fetch(`http://localhost:5000/catagory`)
-        .then(res => res.json())
-        .then(data => setClasses(data))
+        axiosSecure(`/catagory`)
+        .then(data => setClasses(data.data))
     },[])
     return (
         <>

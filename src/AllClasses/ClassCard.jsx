@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProviders";
+import useAxios from "../Hooks/useAxios";
 
 const ClassCard = ({ data }) => {
     const {user} = useContext(AuthContext)
-    
+    const [axiosSecure] = useAxios()
     const admin = false
     const instructor = false
    
@@ -19,14 +20,10 @@ const ClassCard = ({ data }) => {
             instructorEmail: data.instructorEmail,
             userEmail :user.email
         }
-        fetch('http://localhost:5000/selectedClass', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(seclectedClass)
-        })
-        .then(res => res.json())
+        axiosSecure.post('/selectedClass',seclectedClass)
+        // .then(res => res.json())
         .then(data => {
-            console.log(data)
+            console.log(data.data)
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -53,7 +50,7 @@ const ClassCard = ({ data }) => {
                         data.availableSeats == 0 || admin || instructor ? <><p> <button className='btn ' disabled> Select</button></p></> : <><p> <button className='btn btn-warning' onClick={() => handelseclected(data._id)}> Select</button></p></>
                     }
                     {
-                        !data.availableSeats && <> <p className="text-red-600">Sit are not available </p></>
+                        !data.availableSeats && <> <p className="text-red-600">Site are not available </p></>
                     }
 
                 </div>
