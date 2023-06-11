@@ -9,6 +9,9 @@ const useInstructor = () => {
     const {data: isInstractor, isLoading: isAdminLoading} = useQuery({
         queryKey: ['instractor', user?.email],
         queryFn: async () => {
+            if (!user) {
+                return false
+            }
             const res = await axiosSecure.get(`/user/instractor/${user?.email}`);
             return res.data.instractor;
         }

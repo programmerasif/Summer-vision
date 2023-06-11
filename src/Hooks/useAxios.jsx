@@ -18,7 +18,7 @@ const useAxios = () => {
        
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
-        }
+      }
         return config;
       });
   
@@ -26,8 +26,8 @@ const useAxios = () => {
         (response) => response,
         async (error) => {
           if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-            // logOut()
-            // navigate('/login')
+            logOut()
+            navigate('/login')
           }
           return Promise.reject(error);
         }

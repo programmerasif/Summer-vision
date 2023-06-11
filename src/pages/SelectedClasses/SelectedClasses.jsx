@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import HeadingTitle from "../../components/Share/HeadingTitle";
 import useMyclasses from "../../Hooks/useMyclasses";
 import useAxios from "../../Hooks/useAxios";
+import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
     const [Myclas,refetch] = useMyclasses()
@@ -29,13 +30,9 @@ const SelectedClasses = () => {
                 'Your file has been deleted.',
                 'success'
               )
-        })
-
-              
+        })    
             }
           })
-        
-        
     }
    
     return (
@@ -44,8 +41,6 @@ const SelectedClasses = () => {
 
           <div className="flex items-center justify-start  gap-5 mt-5 mb-3 ml-2">
             <h6 className="font-semibold md:text-3xl sm:text-sm text-[#FFBF23] ">Make your payment </h6>
-            
-            <button className="btn btn-sm">Pay</button>
           </div>
           <hr />
            
@@ -60,10 +55,11 @@ const SelectedClasses = () => {
                                 <th className="hidden sm:hidden md:block">
                                     Index
                                 </th>
-                                <th >Image</th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th className="hidden sm:hidden md:block">Trainer Name</th>
+                                <th>Action</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -92,6 +88,10 @@ const SelectedClasses = () => {
                                     <td className="hidden sm:hidden md:block">{d.trainerName}</td>
                                     <th>
                                         <button className="btn bg-red-600 text-white btn-xs" onClick={() =>handelDelet(d._id)}>Delete</button>
+                                    </th>
+                                    <th>
+                                        
+                                        <Link to='/dashboard/payment'><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></Link>
                                     </th>
                                 </tr>)
                             }

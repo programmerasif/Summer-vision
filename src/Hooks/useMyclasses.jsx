@@ -11,6 +11,9 @@ const useMyclasses = () => {
         queryKey: ['Myclass'],
         
         queryFn: async () =>{
+            if (!user) {
+                return []
+            }
             const res = await axiosSecure.get(`/myclasses?email=${user?.email}`)
             return res.data
         }
