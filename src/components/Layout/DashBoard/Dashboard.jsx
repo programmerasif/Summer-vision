@@ -47,10 +47,10 @@ const Dashboard = () => {
        isAdmin && <li><Link to='/dashboard/manageClasses'>Manage classes </Link></li>
       }
       {
-       isInstractor && <li><Link to='/dashboard/addMyclass'>Add Class </Link></li>
+       isInstractor && <li><Link to='/dashboard/newAddedClasses'>Add Class </Link></li>
       }
       {
-        isInstractor && <li><Link to='/dashboard/instractorAddedClasses'> My Add class </Link></li>
+        isInstractor && <li><Link to='/dashboard/instractorAddclass'> My Add class </Link></li>
       }
     </ul>
   

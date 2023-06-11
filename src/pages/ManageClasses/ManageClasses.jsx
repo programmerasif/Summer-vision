@@ -14,6 +14,9 @@ const ManageClasses = () => {
       return res.data
     }
   })
+
+console.log(panding);
+
   const approve = (id) => {
   const item = {
       feedback:feedback,
@@ -46,7 +49,8 @@ const ManageClasses = () => {
     setfeedback(data);
   
   }
-console.log(feedback);
+
+
   return (
     <div className="w-full h-full">
       <HeadingTitle heading='manage classes' />
@@ -82,6 +86,7 @@ console.log(feedback);
               <th>Instructor Name</th>
               <th>Instructor Email</th>
               <th>Total Enrolled</th>
+              <th>Statas</th>
               <th>Feedback</th>
               <th>Action</th>
               <th>Action</th>
@@ -115,25 +120,21 @@ console.log(feedback);
                 <td className="text-start">{item.trainerName}</td>
                 <td className="text-start">{item.email}</td>
                 <td className="text-start">0</td>
+                <td className="text-start">{item.approve}</td>
                 <td className="text-start">
                   {/* The button to open modal */}
                   <label htmlFor="my_modal_6" className="btn btn-sm">Give Feedback</label>
                 </td>
                 <td>
-                  <div className="btn btn-sm text-green-500" onClick={() =>approve(item._id)}>Give-approve</div>
+                  <div disabled={item.approve=='admin-deny'} className="btn btn-sm text-green-500" onClick={() =>approve(item._id)}>Give-approve</div>
                 </td>
                 <td >
-                  <button  className="btn btn-sm text-red-500" onClick={() => deny(item._id) }>Denied</button>
+                  <button disabled={item.approve =='aprove'}  className="btn btn-sm text-red-500" onClick={() => deny(item._id) }>Denied</button>
 
                 </td>
-                {/* <td>
-                  <button className="btn btn-sm text-red-500" onClick={update}>Uppdate</button>
-
-                </td> */}
               </tr>)
             }
           </tbody>
-          {/* foot */}
         </table>
       </div>
     </div>

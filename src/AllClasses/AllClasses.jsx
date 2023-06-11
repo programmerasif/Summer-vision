@@ -10,6 +10,7 @@ const AllClasses = () => {
     
    const [clas, refatch] = useClasses()
    
+   
     return (
         <div>
             <div className="custom-container mt-24 mb-12">

@@ -20,7 +20,7 @@ const ClassCard = ({ data }) => {
             instructorEmail: data.instructorEmail,
             userEmail :user.email
         }
-        axiosSecure.post('/selectedClass',seclectedClass)
+        axiosSecure.post(`/selectedClass/${id}`,seclectedClass)
         // .then(res => res.json())
         .then(data => {
             console.log(data.data)

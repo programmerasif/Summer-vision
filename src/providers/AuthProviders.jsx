@@ -40,6 +40,7 @@ const AuthProviders = ({ children }) => {
     const logOut = () => {
         return signOut(auth)
     }
+    const [token,setToken] = useState('')
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -48,6 +49,7 @@ const AuthProviders = ({ children }) => {
                 .then(data => {
                     console.log(data.data);
                     localStorage.setItem('access-token',data.data.token)
+                    setToken(data.data.token)
                     setloading(false)
                 })
             }
@@ -66,7 +68,8 @@ const AuthProviders = ({ children }) => {
         signUp,
         login,
         profileUpdate,
-        logOut
+        logOut,
+        token
     }
     return (
         <AuthContext.Provider value={authInfo}>

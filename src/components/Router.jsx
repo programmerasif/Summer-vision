@@ -11,6 +11,7 @@ import PrivateRout from "../pages/PrivateRout/PrivateRout";
 import AllUsersInfo from "../pages/AllUsersInfo/AllUsersInfo";
 import ManageClasses from "../pages/ManageClasses/ManageClasses";
 import InstractorAddedClasses from "../pages/InstractorAddedClasses/InstractorAddedClasses";
+import InstructorsAllClasses from "../pages/InstructorsAllClasses/InstructorsAllClasses";
 
 
 
@@ -62,8 +63,12 @@ export const router = createBrowserRouter([
           element: <PrivateRout><ManageClasses /></PrivateRout>
         },
         {
-          path:'instractorAddedClasses',
+          path:'newAddedClasses',
           element: <PrivateRout><InstractorAddedClasses></InstractorAddedClasses></PrivateRout>
+        },
+        {
+          path:'instractorAddclass',
+          element: <PrivateRout><InstructorsAllClasses /> </PrivateRout>
         }
       ]
     }
