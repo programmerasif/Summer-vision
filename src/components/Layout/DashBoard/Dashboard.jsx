@@ -50,7 +50,7 @@ const Dashboard = () => {
        isInstractor && <li><Link to='/dashboard/addMyclass'>Add Class </Link></li>
       }
       {
-        isInstractor && <li><Link to='/dashboard/myAddedClasses'> My Add class </Link></li>
+        isInstractor && <li><Link to='/dashboard/instractorAddedClasses'> My Add class </Link></li>
       }
     </ul>
   

@@ -10,6 +10,7 @@ import SelectedClasses from "../pages/SelectedClasses/SelectedClasses";
 import PrivateRout from "../pages/PrivateRout/PrivateRout";
 import AllUsersInfo from "../pages/AllUsersInfo/AllUsersInfo";
 import ManageClasses from "../pages/ManageClasses/ManageClasses";
+import InstractorAddedClasses from "../pages/InstractorAddedClasses/InstractorAddedClasses";
 
 
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
         {
           path:'manageClasses',
           element: <PrivateRout><ManageClasses /></PrivateRout>
+        },
+        {
+          path:'instractorAddedClasses',
+          element: <PrivateRout><InstractorAddedClasses></InstractorAddedClasses></PrivateRout>
         }
       ]
     }
