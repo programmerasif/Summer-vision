@@ -5,32 +5,51 @@ import HeadingTitle from "../../components/Share/HeadingTitle";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxios()
-  // const [modalData, setModalData] = useState('');
+  // const [value, setvalue] = useState('');
+  const [feedback, setfeedback] = useState(null);
+  // const [denyDisable ,setDenyDiable] = useState(false)
   const { refetch, data: panding = [] } = useQuery({
     queryKey: ['Myclass'], queryFn: async () => {
       const res = await axiosSecure.get('/notApproveClasses')
       return res.data
     }
   })
-  const approve = () => {
-
+  const approve = (id) => {
+  const item = {
+      feedback:feedback,
+      action: 'aprove'
+    }
+    axiosSecure.patch(`/addedClass/${id}`,item)
+    .then(res => {
+      // setDenyDiable(true)
+      refetch()
+      console.log(res.data)
+    })
   }
-  const denied = () => {
-
+  const deny = (id) => {
+    const item = {
+      feedback:feedback,
+      action: 'admin-deny'
+    }
+    axiosSecure.patch(`/addedClass/${id}`,item)
+    .then(res => {
+      refetch()
+      console.log(res.data)
+    })
+    
   }
-  const update = () => {
-
-  }
+ 
   const handelsubmit = (e) =>{
     e.preventDefault()
     const form = e.target;
     const data = form.feedback.value
-    console.log(data);
+    setfeedback(data);
+  
   }
-// console.log(modalData);
+console.log(feedback);
   return (
     <div className="w-full h-full">
-      <HeadingTitle heading='' />
+      <HeadingTitle heading='manage classes' />
     {/* The button to open modal */}
 
 
@@ -66,7 +85,7 @@ const ManageClasses = () => {
               <th>Feedback</th>
               <th>Action</th>
               <th>Action</th>
-              <th>Action</th>
+            
               <th></th>
             </tr>
           </thead>
@@ -98,19 +117,19 @@ const ManageClasses = () => {
                 <td className="text-start">0</td>
                 <td className="text-start">
                   {/* The button to open modal */}
-                  <label htmlFor="my_modal_6" className="btn">open modal</label>
+                  <label htmlFor="my_modal_6" className="btn btn-sm">Give Feedback</label>
                 </td>
                 <td>
-                  <div className="btn btn-sm text-green-500" onClick={approve}>Give-approve</div>
+                  <div className="btn btn-sm text-green-500" onClick={() =>approve(item._id)}>Give-approve</div>
                 </td>
-                <td>
-                  <button className="btn btn-sm text-red-500" onClick={denied}>Denied</button>
+                <td >
+                  <button  className="btn btn-sm text-red-500" onClick={() => deny(item._id) }>Denied</button>
 
                 </td>
-                <td>
+                {/* <td>
                   <button className="btn btn-sm text-red-500" onClick={update}>Uppdate</button>
 
-                </td>
+                </td> */}
               </tr>)
             }
           </tbody>

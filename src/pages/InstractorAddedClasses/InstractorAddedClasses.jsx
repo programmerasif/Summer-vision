@@ -15,7 +15,7 @@ const InstractorAddedClasses = () => {
         const newClass = {
             image: data.photoUrl,
             email:data.email,
-            approve: 'false',
+            approve: 'deny',
             availableSeats: data.seate,
             name: data.clsName,
             price:data.price ,
