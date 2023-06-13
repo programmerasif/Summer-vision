@@ -3,7 +3,7 @@
 const ClassCard = ({data}) => {
    
     return (
-        <div className="">
+        <div className="" data-aos="zoom-out-down">
             <div className="card card-compact md:w-96 sm:w-auto bg-base-100 shadow-xl ">
   <figure><img src={data.image} alt="Shoes" className="h-60"/></figure>
   <div className="card-body">

@@ -7,14 +7,14 @@ import { AuthContext } from '../providers/AuthProviders';
 
 const useClasses = () => {
     const [axiosSecure] = useAxios()
-    const {user} =useContext(AuthContext)
+    // const {user,loading} =useContext(AuthContext)
     
     const { refetch, data: clas = []  } = useQuery({
         queryKey: ['class'],
         queryFn: async () =>{
-            if (!user) {
-                return []
-            }
+            // if (!user) {
+            //     return []
+            // }
             const res = await axiosSecure.get('/allClasses')
             return res.data
             // return res.json()

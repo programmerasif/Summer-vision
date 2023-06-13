@@ -10,7 +10,15 @@ const ClassCard = ({ data }) => {
     const instructor = false
    
     const handelseclected = (id) => {
-       
+        if (!user) {
+           return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You have to login first!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
+        }
+        
         const seclectedClass = {
             image: data.image,
             price: data.price,
@@ -18,14 +26,15 @@ const ClassCard = ({ data }) => {
             trainerName: data.trainerName,
             classId : id,
             instructorEmail: data.instructorEmail,
-            userEmail :user.email
+            userEmail :user.email,
+            cardId: id
         }
         axiosSecure.post(`/selectedClass/${id}`,seclectedClass)
         // .then(res => res.json())
         .then(data => {
             console.log(data.data)
             Swal.fire({
-                position: 'top-end',
+                position: 'center',
                 icon: 'success',
                 title: 'Your work has been saved',
                 showConfirmButton: false,

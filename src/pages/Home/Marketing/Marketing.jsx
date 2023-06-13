@@ -2,7 +2,9 @@
 import Weve from './Weve';
 
 const Marketing = () => {
+    
     return (
+        
         <>
         <div className='mt-20 mb-[0]'>
         <Weve />
@@ -14,8 +16,8 @@ const Marketing = () => {
                     With the Right Decision, <br /> Great Things Can Happen
                     </p>
                  </div>
-                <div className='p-2'>
-                    <h4>
+                <div className="sm:duration-500 md:duration-1000 p-2" data-aos="zoom-in-up"  >
+                    <h4 >
                     At our 'Summer-vision', we believe that learning should be a lifelong journey. Whether you're a working professional seeking to upskill, a student eager to explore new subjects, or an individual passionate about personal development, we have something for everyone.
                     </h4>
                 </div>

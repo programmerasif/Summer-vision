@@ -74,7 +74,7 @@ const Login = () => {
 
 
               <div className="form-control mt-6">
-                <input type="submit" value="Register" className="btn" />
+                <input type="submit" value="LogIn" className="btn" />
               </div>
               <p>Dont have an Account?<Link to='/register'><span className="text-blue-700">Register</span></Link> </p>
              

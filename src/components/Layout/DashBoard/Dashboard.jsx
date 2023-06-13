@@ -38,7 +38,10 @@ const Dashboard = () => {
        isUser  && <li><Link to='/dashboard/selectedClasses'>My Selected classes </Link></li>
       }
       {
-       isUser  && <li><Link to='/dashboard/selectedClasses'>My Enrolled Classes </Link></li>
+       isUser  && <li><Link to='/dashboard/enrolledClasses'>My Enrolled Classes </Link></li>
+      }
+      {
+       isUser  && <li><Link to='/dashboard/paymentHistroy'>My Enrolled Classes </Link></li>
       }
       {
        isAdmin && <li><Link to='/dashboard/allUsers'>Manage Users </Link></li>

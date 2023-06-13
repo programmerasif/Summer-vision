@@ -1,9 +1,14 @@
-import React from 'react';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 const CoachesCard = ({ data }) => {
+    useEffect(() => {
+        AOS.init();
+      }, []);
     return (
         <div className="">
-            <div className="card card-compact md:w-96 sm:w-auto bg-base-100 shadow-xl ">
+            <div data-aos="zoom-in-up" className="card card-compact md:w-96 sm:w-auto bg-base-100 shadow-xl ">
                 <figure><img src={data.image} alt="Shoes" className="h-60" /></figure>
                 <div className="card-body">
                     <h2 className="card-title"> Coach Name : {data.name}</h2>

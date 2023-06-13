@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import HeadingTitle from "../../components/Share/HeadingTitle";
 import useMyclasses from "../../Hooks/useMyclasses";
 import useAxios from "../../Hooks/useAxios";
-import { Link } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 
 const SelectedClasses = () => {
     const [Myclas,refetch] = useMyclasses()
@@ -67,6 +67,7 @@ const SelectedClasses = () => {
                             {/* row 1 */}
                             {
                                 Myclas?.map((d, index) => <tr key={d._id}>
+                                    
                                     <td className="hidden sm:hidden md:block">
                                         {index + 1}
                                     </td>
@@ -91,7 +92,7 @@ const SelectedClasses = () => {
                                     </th>
                                     <th>
                                         
-                                        <Link to='/dashboard/payment'><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></Link>
+                                        <NavLink to='/dashboard/payment' state={{price : d.price, itemId : d._id, countId : d.cardId, itemName : d.name,image : d.image }}><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></NavLink>
                                     </th>
                                 </tr>)
                             }
