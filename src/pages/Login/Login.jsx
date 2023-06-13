@@ -3,14 +3,16 @@ import loginAnemation from "../../assets/145702-login-lottie-yellow.json";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import Weve from "../Home/Marketing/Weve";
 import SocialLogin from "../../components/Share/SocialLogin";
-
+import { FaEye,FaEyeSlash } from "react-icons/fa";
 const Login = () => {
   const { login} = useContext(AuthContext)
   const [err, setError] = useState()
+  const [showpasword,setShowPassword] = useState(false)
+  const navigate = useNavigate()
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
@@ -29,6 +31,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
           })
+          navigate('/')
         }
       })
       .catch((err) => {
@@ -38,7 +41,9 @@ const Login = () => {
         setError('Email or Password is worng ')
       });
   };
-
+const show = () =>{
+setShowPassword(!showpasword)
+}
  
   return (
     <div>
@@ -59,12 +64,13 @@ const Login = () => {
                 <input type="text" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                 {errors.email && <span className="text-red-500">Name is required</span>}
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" {...register("password", { required: true })} placeholder="password" className="input input-bordered" />
+                <input type={showpasword ? 'text' : 'password'} {...register("password", { required: true })} placeholder="password" className="input input-bordered " />
                 {errors.password && <span className="text-red-500">Password is required</span>}
+                <p onClick={show} className="absolute top-12 right-2">{show ? <><FaEyeSlash /> </> : <><FaEye /> </>} </p>
 
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Password?</a>

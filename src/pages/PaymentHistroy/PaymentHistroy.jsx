@@ -29,7 +29,7 @@ const PaymentHistroy = () =>{
                                 <th>TransationId</th>
                                 <th>Price</th> 
                                 <th>Quantity</th> 
-                                <th className="hidden sm:hidden md:block">Wwner Email</th>
+                                <th className="hidden sm:hidden md:block">Woner name</th>
                             </tr>
                         </thead>
                         <tbody>

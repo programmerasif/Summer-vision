@@ -20,7 +20,7 @@ console.log(panding);
   const approve = (id) => {
   const item = {
       feedback:feedback,
-      action: 'aprove'
+      action: 'approve'
     }
     axiosSecure.patch(`/addedClass/${id}`,item)
     .then(res => {

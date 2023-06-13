@@ -7,6 +7,7 @@ import {NavLink } from "react-router-dom";
 const SelectedClasses = () => {
     const [Myclas,refetch] = useMyclasses()
     console.log(Myclas);
+    
     const [axiosSecure] = useAxios()
     const handelDelet = (id) =>{
 
@@ -92,7 +93,7 @@ const SelectedClasses = () => {
                                     </th>
                                     <th>
                                         
-                                        <NavLink to='/dashboard/payment' state={{price : d.price, itemId : d._id, countId : d.cardId, itemName : d.name,image : d.image }}><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></NavLink>
+                                        <NavLink to='/dashboard/payment' state={{price : d.price, itemId : d._id, countId : d.classId, itemName : d.name,image : d.image }}><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></NavLink>
                                     </th>
                                 </tr>)
                             }

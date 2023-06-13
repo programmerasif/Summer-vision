@@ -11,6 +11,7 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin()
   const [isUser] = useUser()
   const[isInstractor] = useInstructor()
+  console.log(isUser);
   
   
   

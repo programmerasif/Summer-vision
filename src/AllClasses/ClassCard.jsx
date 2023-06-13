@@ -2,12 +2,14 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProviders";
 import useAxios from "../Hooks/useAxios";
+import useAdmin from "../Hooks/useAdmin";
+import useInstructor from "../Hooks/useInstructor";
 
 const ClassCard = ({ data }) => {
     const {user} = useContext(AuthContext)
     const [axiosSecure] = useAxios()
-    const admin = false
-    const instructor = false
+    const [isAdmin] = useAdmin()
+    const[isInstractor] = useInstructor()
    
     const handelseclected = (id) => {
         if (!user) {
@@ -53,13 +55,10 @@ const ClassCard = ({ data }) => {
                     <h2 className="card-title"> Name : {data.name}</h2>
                     <p>Instructor name : {data.trainerName} </p>
                     <p>Instructor Email : {data.email} </p>
-                    <p>Available seats : {data.availableSeats} </p>
+                    <p className={!data.availableSeats && 'text-red-700'}>Available seats : {data.availableSeats} </p>
                     <p>Price : {data.price} </p>
                     {
-                        data.availableSeats == 0 || admin || instructor ? <><p> <button className='btn ' disabled> Select</button></p></> : <><p> <button className='btn btn-warning' onClick={() => handelseclected(data._id)}> Select</button></p></>
-                    }
-                    {
-                        !data.availableSeats && <> <p className="text-red-600">Site are not available </p></>
+                     <button disabled={isAdmin || isInstractor || data.availableSeats == 0}  className='btn btn-warning' onClick={() => handelseclected(data._id)}> Select</button>
                     }
 
                 </div>

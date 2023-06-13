@@ -3,7 +3,7 @@ import loginAnemation from "../../assets/145702-login-lottie-yellow.json";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Weve from "../Home/Marketing/Weve";
 import SocialLogin from "../../components/Share/SocialLogin";
@@ -14,6 +14,7 @@ const Register = () => {
   const { user, signUp, profileUpdate } = useContext(AuthContext)
   const [conPass,setConpass] =useState(true)
   const [axiosSecure] = useAxios()
+  const navigate = useNavigate()
 
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -38,6 +39,7 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500
             })
+            navigate('/')
             // Profile updated!
             // sending all users data into data base
             const person = { name: user?.displayName, email: user?.email, role : 'user' }

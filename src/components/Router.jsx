@@ -17,6 +17,7 @@ import EnrolledClasses from "../pages/EnrolledClasses/EnrolledClasses";
 import PaymentHistroy from "../pages/PaymentHistroy/PaymentHistroy";
 import AdminRouts from "../Routs/AdminRouts";
 import InstructorRout from "../Routs/InstructorRout";
+import ErrorPage from "./ErrorPage";
 
 
 
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main />,
+      errorElement: <ErrorPage />,
       children: [
         {
             path:'/',

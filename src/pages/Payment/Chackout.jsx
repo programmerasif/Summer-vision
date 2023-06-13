@@ -4,6 +4,7 @@ import useAxios from '../../Hooks/useAxios';
 import { AuthContext } from '../../providers/AuthProviders';
 import './Chackout.css'
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 
 const Chackout = ({price,itemId,itemName,countId,image}) => {
@@ -15,6 +16,7 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
     const [clientSecret,setclientSecret] = useState('')
     const [processing,setProcessing] = useState(false)
     const [transationId,setTransationId] = useState('')
+    const navigate = useNavigate()
 
     useEffect(() =>{
         if (price > 0) {
@@ -24,7 +26,7 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
         })
         }
     },[])
-
+console.log(countId);
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -101,6 +103,9 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
                         showConfirmButton: false,
                         timer: 1500
                       })
+                      axiosSecure.put(`/deleteCount/${countId}`)
+                      .then(res => console.log(res.data))
+                      navigate('/')
                 }
             })
 

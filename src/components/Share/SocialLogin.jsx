@@ -3,9 +3,11 @@ import { AuthContext } from '../../providers/AuthProviders';
 import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 import useAxios from '../../Hooks/useAxios';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
   const [axiosSecure] = useAxios()
+  const navigate = useNavigate()
     const {googleSignin,setloading} = useContext(AuthContext)
     const handelGoogleLogin = () =>{
        
@@ -18,6 +20,7 @@ const SocialLogin = () => {
             showConfirmButton: false,
             timer: 1500
           })
+          navigate('/')
           const user = result.user;
           if (user.email) {
             setloading(true)
