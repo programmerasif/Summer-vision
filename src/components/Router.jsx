@@ -15,6 +15,8 @@ import InstructorsAllClasses from "../pages/InstructorsAllClasses/InstructorsAll
 import Payment from "../pages/Payment/Payment";
 import EnrolledClasses from "../pages/EnrolledClasses/EnrolledClasses";
 import PaymentHistroy from "../pages/PaymentHistroy/PaymentHistroy";
+import AdminRouts from "../Routs/AdminRouts";
+import InstructorRout from "../Routs/InstructorRout";
 
 
 
@@ -63,25 +65,25 @@ export const router = createBrowserRouter([
         ,
         {
           path: 'paymentHistroy',
-          element:<PaymentHistroy />
+          element:<PrivateRout><PaymentHistroy /></PrivateRout>
         }
         ,
         {
           path:'allUsers',
-          element: <PrivateRout><AllUsersInfo /></PrivateRout>
+          element: <PrivateRout> <AdminRouts > <AllUsersInfo /></AdminRouts> </PrivateRout>
         },
        
         {
           path:'manageClasses',
-          element: <PrivateRout><ManageClasses /></PrivateRout>
+          element: <PrivateRout><AdminRouts><ManageClasses /></AdminRouts> </PrivateRout>
         },
         {
           path:'newAddedClasses',
-          element: <PrivateRout><InstractorAddedClasses></InstractorAddedClasses></PrivateRout>
+          element: <PrivateRout> <InstructorRout> <InstractorAddedClasses /> </InstructorRout> </PrivateRout>
         },
         {
           path:'instractorAddclass',
-          element: <PrivateRout><InstructorsAllClasses /> </PrivateRout>
+          element: <PrivateRout><InstructorRout> <InstructorsAllClasses /> </InstructorRout> </PrivateRout>
         }
         ,
         {

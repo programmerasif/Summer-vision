@@ -3,11 +3,14 @@ import './instractor.css'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../providers/AuthProviders';
 import useAxios from '../../Hooks/useAxios';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const InstractorAddedClasses = () => {
     const { user } = useContext(AuthContext)
     const [axiosSecure] = useAxios()
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const navigate = useNavigate()
+    const { register, handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = data => {
         
         console.log(data);
@@ -23,7 +26,19 @@ const InstractorAddedClasses = () => {
             trainerName:data.insName,
         }
         axiosSecure.post(`/allClasses`,newClass)
-        .then(res => console.log(res.data))
+        .then(res => {
+            if (res.data.insertedId) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your added class succesfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  navigate('/dashboard/instractorAddclass')
+            }
+            
+        })
 
     }
     return (

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import { AuthContext } from '../../providers/AuthProviders';
 import './Chackout.css'
+import Swal from 'sweetalert2';
 
 
 const Chackout = ({price,itemId,itemName,countId,image}) => {
@@ -43,7 +44,11 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
 
           if (error) {
             console.log('error', error);
-            setErr(err.message)
+            console.log('error', error.message);
+            setErr(error.message)
+            if (err) {
+                console.log('there is a problem ');
+            }
           } else {
             setErr('')
             console.log('PaymentMethod', paymentMethod);
@@ -67,7 +72,7 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
           }
           console.log("paymentIntent",paymentIntent);
           setProcessing(false)
-          if (paymentIntent.status == 'succeeded') {
+          if (paymentIntent?.status == 'succeeded') {
             const TransationId = paymentIntent.id
             setTransationId(TransationId)
 
@@ -89,8 +94,13 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
-                    console.log('pice bhai');
-                    console.log('pice bhai' ,);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your have successfully complite your Payment',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 }
             })
 
@@ -98,14 +108,14 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
             axiosSecure.delete(`/confirmPayment/${itemId}`)
             .then(res => console.log(res.data))
           }
-
+         
 
 
         };
     return (
         <>
-        <form className='mt-72 h-[60vh] px-8' onSubmit={handleSubmit}>
-            <CardElement
+        <form className='flex items-center justify-center flex-col w-full' onSubmit={handleSubmit}>
+            <div className='w-full sm:ms-2 md:ms-[1065px] '><CardElement
                 options={{
                     style: {
                         base: {
@@ -120,13 +130,13 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
                         },
                     },
                 }}
-            />
-            <button type="submit" disabled={!stripe || !clientSecret || processing}>
+            /></div>
+            <button className='w-[32%] mx-auto btn bg-gray-400' type="submit" disabled={!stripe || !clientSecret || processing}>
                 Pay
             </button>
         </form>
         {
-            err && <p className='text-red-500'> {err}</p>
+            err && <p className='text-red-500 flex justify-center items-center'> {err}</p>
         }
         {
             transationId && <p className='text-green-500'> {transationId}</p>

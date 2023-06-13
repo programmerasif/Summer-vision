@@ -41,7 +41,7 @@ const Dashboard = () => {
        isUser  && <li><Link to='/dashboard/enrolledClasses'>My Enrolled Classes </Link></li>
       }
       {
-       isUser  && <li><Link to='/dashboard/paymentHistroy'>My Enrolled Classes </Link></li>
+       isUser  && <li><Link to='/dashboard/paymentHistroy'>Payment History </Link></li>
       }
       {
        isAdmin && <li><Link to='/dashboard/allUsers'>Manage Users </Link></li>

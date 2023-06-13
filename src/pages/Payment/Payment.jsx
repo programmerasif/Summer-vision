@@ -3,6 +3,7 @@ import HeadingTitle from "../../components/Share/HeadingTitle";
 import Chackout from "./Chackout";
 import { Elements } from "@stripe/react-stripe-js";
 import { useLocation } from "react-router-dom";
+import './Payment.css'
 // TODO provide key 
 const stripePromise = loadStripe('pk_test_51NFEcBHhSxbFq9EibI7wK8uzfx572W4CsZSiMhNFJciRDNPbrvMEkjsmphoQgJDMPQ4DN5B4yCeMkNw0eVOG7SXx00l2NRGLbl');
 const Payment = () => {
@@ -16,7 +17,7 @@ const Payment = () => {
     const price = parseFloat(priceStr.toFixed(2))
     console.log(itemId);
     return (
-        <div>
+        <div className="bg-img w-full">
             <HeadingTitle heading='please complite your payment' />
 
             <Elements stripe={stripePromise}>

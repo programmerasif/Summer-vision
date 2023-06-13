@@ -62,9 +62,14 @@ console.log(panding);
 <div className="modal">
   <div className="modal-box">
     <h3 className="font-bold text-lg">Hello!</h3>
-    <form onSubmit={handelsubmit}>
-    <p className="py-4">This modal works with a hidden checkbox!</p> 
-    <input type="text" name="feedback" />
+    <form onSubmit={handelsubmit}> 
+   
+    <div className="form-control w-full max-w-xs">
+  <label className="label">
+    <span className="label-text">Type your feedback</span>
+  </label>
+  <input type="text" name="feedback" placeholder="Type your feedback?" className="input input-bordered w-full max-w-xs" />
+</div>
     <div className="modal-action" >
       <input type="submit" value="Send Feedback" className="btn"/>
       <label htmlFor="my_modal_6" className="btn" >Close!</label>
@@ -126,10 +131,10 @@ console.log(panding);
                   <label htmlFor="my_modal_6" className="btn btn-sm">Give Feedback</label>
                 </td>
                 <td>
-                  <div disabled={item.approve=='admin-deny'} className="btn btn-sm text-green-500" onClick={() =>approve(item._id)}>Give-approve</div>
+                  <div disabled={item.approve != 'pending'} className="btn btn-sm text-green-500" onClick={() =>approve(item._id)}>Give-approve</div>
                 </td>
                 <td >
-                  <button disabled={item.approve =='aprove'}  className="btn btn-sm text-red-500" onClick={() => deny(item._id) }>Denied</button>
+                  <button disabled={item.approve != 'pending'}  className="btn btn-sm text-red-500" onClick={() => deny(item._id) }>Denied</button>
 
                 </td>
               </tr>)
