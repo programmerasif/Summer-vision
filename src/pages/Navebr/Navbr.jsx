@@ -42,14 +42,14 @@ const Navbr = () => {
                         </label>
                         {/* Mobile */}
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-4 shadow bg-base-100 rounded-box w-52 gap-4 ">
-                            <NavLink><li> Home</li></NavLink>
-                            <NavLink><li>Instructors</li> </NavLink>
-                            <NavLink><li>Classes</li> </NavLink>
+                            <NavLink to='/'><li> Home</li></NavLink>
+                            <NavLink to='/instructor'><li>Instructors</li> </NavLink>
+                            <NavLink to='/allclasses'><li>Classes</li> </NavLink>
                             {
                                 user ? <><NavLink><li onClick={handelLogout}>Log-Out</li> </NavLink></> : <><NavLink to='login'><li>Log-In</li> </NavLink> <NavLink to='register'><li>Register</li> </NavLink></>
                             }
                             {
-                                user ? <><NavLink><li>Dashboard</li> </NavLink>
+                                user ? <><NavLink to='/dashboard'><li>Dashboard</li> </NavLink>
                                     <NavLink><img src={user.photoURL} alt="" className='w-8 rounded-full' /> </NavLink></> :
                                     <></>
                             }
@@ -80,7 +80,7 @@ const Navbr = () => {
                             user ? <><NavLink><li onClick={handelLogout}>Log-Out</li> </NavLink></> : <><NavLink to='login'><li>Log-In</li> </NavLink> <NavLink to='register'><li>Register</li> </NavLink></>
                         }
                         {
-                            user ? <><NavLink to='dashboard'><li>Dashboard</li> </NavLink>
+                            user ? <><NavLink to='/dashboard'><li>Dashboard</li> </NavLink>
                                 <NavLink><img src={user.photoURL} alt="" className='w-8 rounded-full' /> </NavLink></> :
                                 <></>
                         }

@@ -8,8 +8,8 @@ const useAxios = () => {
     const navigate = useNavigate(); 
   
     const axiosSecure = axios.create({
-      baseURL: 'http://localhost:5000/', 
-      // baseURL: 'https://server-project-theta.vercel.app/', 
+      // baseURL: 'http://localhost:5000/', 
+      baseURL: 'https://summer-vision.vercel.app/', 
     });
  
     useEffect(() => {
