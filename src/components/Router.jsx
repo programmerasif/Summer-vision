@@ -19,6 +19,8 @@ import AdminRouts from "../Routs/AdminRouts";
 import InstructorRout from "../Routs/InstructorRout";
 import ErrorPage from "./ErrorPage";
 
+import Texting from "../Texting/Texting";
+
 
 
 export const router = createBrowserRouter([
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
         {
           path:'login',
           element: <Login />
+        },
+        {
+         path:'text',
+         element:<Texting />
         },
         {
           path: 'register',

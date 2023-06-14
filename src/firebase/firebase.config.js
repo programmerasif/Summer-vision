@@ -4,14 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-
+console.log(import.meta.env.VITE_SOME_authDomain);
 const firebaseConfig = {
-  apiKey: "AIzaSyBvm3YvUjQdD4fr5Jvgw2K8BO_Xsb6Crw0",
-  authDomain: "summer-vision.firebaseapp.com",
-  projectId: "summer-vision",
-  storageBucket: "summer-vision.appspot.com",
-  messagingSenderId: 443869756713,
-  appId: "443869756713:web:f4ddb01e53f32f26e5cb38",
+  apiKey: import.meta.env.VITE_SOME_apiKey,
+  authDomain: import.meta.env.VITE_SOME_authDomain,
+  projectId: import.meta.env.VITE_SOME_projectId,
+  storageBucket: import.meta.env.VITE_SOME_storageBucket,
+  messagingSenderId: import.meta.env.VITE_SOME_messagingSenderId,
+  appId: import.meta.env.VITE_SOME_appId,
 }
 
 

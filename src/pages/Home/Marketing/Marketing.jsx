@@ -1,4 +1,5 @@
 
+import { Fade } from 'react-awesome-reveal';
 import Weve from './Weve';
 
 const Marketing = () => {
@@ -16,10 +17,12 @@ const Marketing = () => {
                     With the Right Decision, <br /> Great Things Can Happen
                     </p>
                  </div>
-                <div className="sm:duration-500 md:duration-1000 p-2" data-aos="zoom-in-up"  >
+                <div className="sm:duration-500 md:duration-1000 p-2"  >
+                <Fade>
                     <h4 >
                     At our 'Summer-vision', we believe that learning should be a lifelong journey. Whether you're a working professional seeking to upskill, a student eager to explore new subjects, or an individual passionate about personal development, we have something for everyone.
                     </h4>
+                    </Fade>
                 </div>
                </div>
                </div>
