@@ -105,6 +105,10 @@ console.log(countId);
                       })
                       axiosSecure.put(`/deleteCount/${countId}`)
                       .then(res => console.log(res.data))
+
+                    //   update value 1
+                    axiosSecure.put(`/instructorUpdatedCasll/${countId}`)
+                      .then(res => console.log(res.data))
                       navigate('/')
                 }
             })

@@ -14,16 +14,17 @@ const InstractorAddedClasses = () => {
     const onSubmit = data => {
         
         console.log(data);
-
+        const site = parseInt(data.seate)
         const newClass = {
             image: data.photoUrl,
             email:data.email,
             approve: 'pending',
             role : 'aproveReq',
-            availableSeats: data.seate,
+            availableSeats: site,
             name: data.clsName,
             price:data.price ,
             trainerName:data.insName,
+            enrolled : 0
         }
         axiosSecure.post(`/allClasses`,newClass)
         .then(res => {

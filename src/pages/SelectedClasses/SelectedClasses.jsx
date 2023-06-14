@@ -93,7 +93,7 @@ const SelectedClasses = () => {
                                     </th>
                                     <th>
                                         
-                                        <NavLink to='/dashboard/payment' state={{price : d.price, itemId : d._id, countId : d.classId, itemName : d.name,image : d.image }}><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></NavLink>
+                                        <NavLink to='/dashboard/payment' state={{price : d?.price, itemId : d._id, countId : d.classId, itemName : d.name,image : d.image }}><button className="btn bg-[#ffbf23] text-white btn-xs">Payment</button></NavLink>
                                     </th>
                                 </tr>)
                             }

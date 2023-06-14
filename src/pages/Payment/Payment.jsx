@@ -13,9 +13,12 @@ const Payment = () => {
     const itemId = location.state.itemId
     const image = location.state.image
     const countId = location.state.countId
-    const priceStr = location.state.price
-    const price = parseFloat(priceStr.toFixed(2))
+    const price = location.state?.price
+    // const price = parseInt(priceStr.toFixed(2))
+
+    
     console.log(itemId);
+    console.log(price);
     return (
         <div className="bg-img w-full">
             <HeadingTitle heading='please complite your payment' />
