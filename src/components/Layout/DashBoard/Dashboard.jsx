@@ -35,7 +35,7 @@ console.log(isUser);
 
           <Outlet />
         </div>
-        <div className="drawer-side mt-16 min-h-[60vh]">
+        <div className="drawer-side mt-16 min-h-[60vh] z-10">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-[#ffbf15] text-base-content">
             {/* Sidebar content here */}
@@ -71,10 +71,10 @@ console.log(isUser);
               isAdmin && <li><Link to='/dashboard/manageClasses'>Manage classes </Link></li>
             }
             {
-              isInstractor && <li><Link to='/dashboard/newAddedClasses'><div className='mt-5 flex items-center gap-2'><FaBookOpen />  <span>classes</span> </div> </Link></li>
+              isInstractor && <li><Link to='/dashboard/newAddedClasses'><div className='mt-5 flex items-center gap-2'><FaBookOpen />  <span>Add Classes</span> </div> </Link></li>
             }
             {
-              isInstractor && <li><Link to='/dashboard/instractorAddclass'><FaBookOpen />  My Add class </Link></li>
+              isInstractor && <li><Link to='/dashboard/instractorAddclass'><FaBookOpen />  My Added class </Link></li>
             }
            </div>
             <div className="flex flex-col w-full border-opacity-50">
