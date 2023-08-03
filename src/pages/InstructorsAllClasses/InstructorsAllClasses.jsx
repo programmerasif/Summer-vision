@@ -9,7 +9,7 @@ const InstructorsAllClasses = () => {
     const {user} = useContext(AuthContext);
     const[data,setdata] = useState([])
     const [feedback,setfeedback] = useState('')
-    console.log(feedback);
+    
     // console.log(user);
     const [axiosSecure] =useAxios()
     useEffect(() =>{

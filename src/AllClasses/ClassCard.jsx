@@ -34,7 +34,7 @@ const ClassCard = ({ data }) => {
         axiosSecure.post(`/selectedClass/${id}`,seclectedClass)
         // .then(res => res.json())
         .then(data => {
-            console.log(data.data)
+            console.log(`37 line ${data.data}`)
             Swal.fire({
                 position: 'center',
                 icon: 'success',

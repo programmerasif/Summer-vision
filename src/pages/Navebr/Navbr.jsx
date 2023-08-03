@@ -98,7 +98,6 @@ const Navbr = () => {
 </label>
                         <NavLink><li><button className='bg-[#FFBF23] outline outline-black-2 outline-1'>Get-Start</button></li> </NavLink>
                         
-                       <NavLink to='/text'>text</NavLink>
                     </ul>
                 </div>
 

@@ -11,6 +11,8 @@ import Marketing from "../Marketing/Marketing";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 
 import { Fade } from "react-awesome-reveal";
+import SuccesfulStudent from "../SuccesfullStudent/SuccesfulStudent";
+
 
 const HomePage = () => {
     return (
@@ -72,6 +74,10 @@ const HomePage = () => {
             <Marketing></Marketing>
             {/* PopularInstructors */}
             <PopularInstructors />
+            {/* Successfull student */}
+            <SuccesfulStudent />
+            {/* connect */}
+            {/* <Connect /> */}
         </div>
     );
 };

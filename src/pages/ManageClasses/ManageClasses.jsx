@@ -15,7 +15,7 @@ const ManageClasses = () => {
     }
   })
 
-console.log(panding);
+// console.log(panding);
 
   const approve = (id) => {
   const item = {

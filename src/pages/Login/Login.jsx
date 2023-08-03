@@ -17,12 +17,12 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
 
-    console.log(data)
+    // console.log(data)
     login(data.email, data.password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         if (user) {
           Swal.fire({
             position: 'center',

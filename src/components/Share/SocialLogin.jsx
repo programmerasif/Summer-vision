@@ -33,6 +33,7 @@ const SocialLogin = () => {
           const err = error.message;
           console.log(err);
         });
+        
       }
     return (
         <div className='w-full p-3 pb-5'>

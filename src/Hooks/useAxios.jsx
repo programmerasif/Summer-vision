@@ -1,15 +1,17 @@
 import axios from 'axios';
-import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../providers/AuthProviders';
+import { useEffect } from 'react';
+
+// import { useNavigate } from 'react-router-dom';
+
 
 const useAxios = () => {
-    const {logOut,token}= useContext(AuthContext)
-    const navigate = useNavigate(); 
+    // const {token}= useContext(AuthContext)
+    // const navigate = useNavigate(); 
   
     const axiosSecure = axios.create({
       // baseURL: 'http://localhost:5000/', 
-      baseURL: 'https://summer-vision.vercel.app/', 
+      // baseURL: 'https://summer-vision.vercel.app/', 
+       baseURL: 'https://summer-ivory.vercel.app/', //for back up 
     });
  
     useEffect(() => {
@@ -17,10 +19,11 @@ const useAxios = () => {
       
      
       axiosSecure.interceptors.request.use((config) => {
-        // const token = localStorage.getItem('access-token');
+        const token = localStorage.getItem('access-token');
        
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
+          console.log(config.headers);
       }
         return config;
       });
@@ -35,7 +38,7 @@ const useAxios = () => {
           return Promise.reject(error);
         }
       );
-    }, [logOut, navigate, axiosSecure,token]);
+    }, []);
   
     return [axiosSecure];
   };

@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile,  } from "firebase/auth";
 import app from '../firebase/firebase.config';
-import axios from 'axios';
+// import axios from 'axios';
+import useAxios from '../Hooks/useAxios';
 
 
 
@@ -13,7 +14,8 @@ export const auth = getAuth(app)
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setloading] = useState(true)
-
+    const [axiosSecure] = useAxios()
+    const [token,setToken] = useState('')
     const googleProvider = new GoogleAuthProvider();
 
 
@@ -40,16 +42,26 @@ const AuthProviders = ({ children }) => {
     const logOut = () => {
         return signOut(auth)
     }
-    const [token,setToken] = useState('')
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             if (currentUser) {
-                axios.post(`https://summer-vision.vercel.app/jwt`,{email: currentUser.email})
-                .then(data => {
-                    console.log(data.data);
-                    localStorage.setItem('access-token',data.data.token)
-                    setToken(data.data.token)
+                // axios.post(`https://second-serer.vercel.app/jwt`,{email: currentUser.email},{
+                //     headers: {
+                //       'Content-Type': 'application/json', // Set the appropriate Content-Type header
+                //       authorization: `Bearer ${token}`, // Include the token in the Authorization header
+                //       // Add any other custom headers you need for this specific request
+                //     }})
+                // .then(data => {
+                //     console.log(data.data);
+                    
+                // })
+                axiosSecure.post('/jwt',{email: currentUser.email})
+                .then(res => {
+                    console.log(res.data)
+                    localStorage.setItem('access-token',res.data.token)
+                    setToken(res.data.token)
                     setloading(false)
                 })
             }
@@ -64,11 +76,11 @@ const AuthProviders = ({ children }) => {
         user,
         loading,
         setloading,
+        logOut,
         googleSignin,
         signUp,
         login,
         profileUpdate,
-        logOut,
         token
     }
     return (

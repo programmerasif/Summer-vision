@@ -8,7 +8,7 @@ import './Payment.css'
 const stripePromise = loadStripe('pk_test_51NFEcBHhSxbFq9EibI7wK8uzfx572W4CsZSiMhNFJciRDNPbrvMEkjsmphoQgJDMPQ4DN5B4yCeMkNw0eVOG7SXx00l2NRGLbl');
 const Payment = () => {
     const location = useLocation();
-    console.log(location.state.itemName);
+    // console.log(location.state.itemName);
     const itemName = location.state.itemName
     const itemId = location.state.itemId
     const image = location.state.image

@@ -1,0 +1,17 @@
+  fetch('https://summer-vision.vercel.app/jwt',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Set the appropriate Content-Type header
+                        authorization: `Bearer ${token}`, // Include the token in the Authorization header
+                      },
+                    body: JSON.stringify({email: currentUser.email}),
+                  }
+                )
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    localStorage.setItem('access-token',data)
+                    setToken(data)
+                    setloading(false)
+                })

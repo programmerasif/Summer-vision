@@ -17,7 +17,7 @@ const Dashboard = () => {
   const {user} = useContext(AuthContext)
  
   
-console.log(isUser);
+
 
   // const users = {role : "admin"}
   return (

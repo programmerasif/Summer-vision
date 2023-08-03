@@ -26,7 +26,7 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
         })
         }
     },[])
-console.log(countId);
+// console.log(countId);
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -45,7 +45,7 @@ console.log(countId);
           });
 
           if (error) {
-            console.log('error', error);
+            // console.log('error', error);
             console.log('error', error.message);
             setErr(error.message)
             if (err) {
@@ -53,7 +53,7 @@ console.log(countId);
             }
           } else {
             setErr('')
-            console.log('PaymentMethod', paymentMethod);
+            // console.log('PaymentMethod', paymentMethod);
           }
 
           setProcessing(true)
@@ -72,7 +72,7 @@ console.log(countId);
           if (confirmErro) {
             console.log(confirmErro);
           }
-          console.log("paymentIntent",paymentIntent);
+        //   console.log("paymentIntent",paymentIntent);
           setProcessing(false)
           if (paymentIntent?.status == 'succeeded') {
             const TransationId = paymentIntent.id
@@ -94,7 +94,7 @@ console.log(countId);
             }
             axiosSecure.post('/paymentDetils',payment)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: 'center',

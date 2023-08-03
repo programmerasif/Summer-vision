@@ -13,7 +13,6 @@ const AllUsersInfo = () => {
         if (data.data.modifiedCount) {
           refetch()
         }
-        console.log(data)
       })
   }
   const makeInstractor = (id) => {
@@ -23,7 +22,6 @@ const AllUsersInfo = () => {
         if (data.data.modifiedCount) {
           refetch()
         }
-        console.log(data.data)
       })
   }
 

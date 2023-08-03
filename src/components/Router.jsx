@@ -18,8 +18,8 @@ import PaymentHistroy from "../pages/PaymentHistroy/PaymentHistroy";
 import AdminRouts from "../Routs/AdminRouts";
 import InstructorRout from "../Routs/InstructorRout";
 import ErrorPage from "./ErrorPage";
-
-import Texting from "../Texting/Texting";
+import SuccesfulStudent from "../pages/Home/SuccesfullStudent/SuccesfulStudent";
+import Connect from "../pages/Home/Connect/Connect";
 
 
 
@@ -38,10 +38,6 @@ export const router = createBrowserRouter([
           element: <Login />
         },
         {
-         path:'text',
-         element:<Texting />
-        },
-        {
           path: 'register',
           element:<Register />
         }
@@ -54,6 +50,14 @@ export const router = createBrowserRouter([
         {
           path: 'allclasses',
           element:<AllClasses />
+        },
+        {
+          path:'succesfullStudent',
+          element: <SuccesfulStudent />
+        },
+        {
+          path:'connect',
+          element: <Connect />
         }
         
       ]

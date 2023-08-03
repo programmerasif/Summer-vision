@@ -13,7 +13,6 @@ const InstractorAddedClasses = () => {
     const { register, handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = data => {
         
-        console.log(data);
         const site = parseInt(data.seate)
         const newClass = {
             image: data.photoUrl,

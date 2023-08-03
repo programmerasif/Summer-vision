@@ -6,7 +6,7 @@ import {NavLink } from "react-router-dom";
 
 const SelectedClasses = () => {
     const [Myclas,refetch] = useMyclasses()
-    console.log(Myclas);
+    // console.log(Myclas);
     
     const [axiosSecure] = useAxios()
     const handelDelet = (id) =>{
