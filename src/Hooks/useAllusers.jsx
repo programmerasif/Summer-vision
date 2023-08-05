@@ -16,7 +16,7 @@ const useAllusers = () => {
             // if (!user) {
             //     return []
             // }
-            const res = await axiosSecure('/all-user')
+            const res = await axiosSecure.get('/all-user') //8/4/2023 Todo
             return res.data
         }
       })

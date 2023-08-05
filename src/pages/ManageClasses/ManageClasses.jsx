@@ -1,45 +1,51 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import HeadingTitle from "../../components/Share/HeadingTitle";
+import { authorization } from "../../Hooks/commonFunction/authorize";
 
 const ManageClasses = () => {
-  const [axiosSecure] = useAxios()
-  // const [value, setvalue] = useState('');
+  
+  
   const [feedback, setfeedback] = useState(null);
-  // const [denyDisable ,setDenyDiable] = useState(false)
+  
+  const token = localStorage.getItem('access-token')
   const { refetch, data: panding = [] } = useQuery({
     queryKey: ['Myclass'], queryFn: async () => {
-      const res = await axiosSecure.get('/notApproveClasses')
-      return res.data
+      // const res = await axiosSecure.get('/notApproveClasses')
+      // return res.data
+      const url = `http://localhost:5000/notApproveClasses`; 
+            const headers = {
+                "Content-Type": "application/json", 
+                "Authorization": `Bearer ${token}`, 
+              };
+            const response = await fetch(url, {
+                method: 'GET', 
+                headers: headers,
+              });
+
+              const data = await response.json();
+            console.log(data);
+            return data
     }
   })
 
-// console.log(panding);
+console.log(panding);
 
   const approve = (id) => {
   const item = {
       feedback:feedback,
       action: 'approve'
     }
-    axiosSecure.patch(`/addedClass/${id}`,item)
-    .then(res => {
-      // setDenyDiable(true)
-      refetch()
-      console.log(res.data)
-    })
+    authorization(item,id,token,refetch)
   }
   const deny = (id) => {
     const item = {
       feedback:feedback,
       action: 'admin-deny'
     }
-    axiosSecure.patch(`/addedClass/${id}`,item)
-    .then(res => {
-      refetch()
-      console.log(res.data)
-    })
     
+    authorization(item,id,token,refetch)
   }
  
   const handelsubmit = (e) =>{

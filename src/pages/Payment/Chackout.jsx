@@ -96,13 +96,18 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Your have successfully complite your Payment',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
+                    // Swal.fire({
+                    //     position: 'center',
+                    //     icon: 'success',
+                    //     title: 'Your have successfully complite your Payment',
+                    //     showConfirmButton: false,
+                    //     timer: 1500
+                    //   })
+                    Swal.fire(
+                        'Payment succesfull',
+                        'Thank you for purchaseing',
+                        'success'
+                      )
                       axiosSecure.put(`/deleteCount/${countId}`)
                       .then(res => console.log(res.data))
 

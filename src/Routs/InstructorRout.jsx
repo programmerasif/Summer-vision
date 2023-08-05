@@ -5,10 +5,10 @@ import { Navigate } from 'react-router-dom';
 
 const InstructorRout = ({children}) => {
     const { user, loading } =  useContext(AuthContext)
-    const [isInstractor, isAdminLoading]=  useInstructor()
+    const [isInstractor, isInstractorLoading]=  useInstructor() //8/4/23 to do
     
-
-    if(loading || isAdminLoading){
+//8/4/23 to do
+    if(loading || isInstractorLoading){
         return <p>Loading for secure</p>
     }
 

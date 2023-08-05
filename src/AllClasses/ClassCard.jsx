@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProviders";
-import useAxios from "../Hooks/useAxios";
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../Hooks/useInstructor";
+import { studentAddedClass } from "../Hooks/commonFunction/studentAddedClass";
 
 const ClassCard = ({ data }) => {
     const {user} = useContext(AuthContext)
-    const [axiosSecure] = useAxios()
+    
     const [isAdmin] = useAdmin()
     const[isInstractor] = useInstructor()
+    const token = localStorage.getItem('access-token')
    
     const handelseclected = (id) => {
         if (!user) {
@@ -31,18 +32,7 @@ const ClassCard = ({ data }) => {
             userEmail :user.email,
             cardId: id
         }
-        axiosSecure.post(`/selectedClass/${id}`,seclectedClass)
-        // .then(res => res.json())
-        .then(data => {
-            console.log(`37 line ${data.data}`)
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        })
+        studentAddedClass(seclectedClass,token,id)
         
     }
 

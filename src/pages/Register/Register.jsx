@@ -9,13 +9,16 @@ import Weve from "../Home/Marketing/Weve";
 import SocialLogin from "../../components/Share/SocialLogin";
 import Swal from "sweetalert2";
 import useAxios from "../../Hooks/useAxios";
+import axios from "axios";
+import { addedUser } from "../../Hooks/commonFunction/addedUser";
 
 const Register = () => {
-  const { user, signUp, profileUpdate } = useContext(AuthContext)
+  const { user, signUp, profileUpdate,setloading } = useContext(AuthContext)
   const [conPass,setConpass] =useState(true)
   const [axiosSecure] = useAxios()
   const navigate = useNavigate()
 
+  const token = localStorage.getItem('access-token')
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
@@ -39,16 +42,11 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500
             })
-            navigate('/')
-            // Profile updated!
-            // sending all users data into data base
-            const person = { name: user?.displayName, email: user?.email, role : 'user' }
-            axiosSecure.post(`/all-user`,person)
-              .then(() => { })
-          }).catch((error) => {
-            // An error occurred
-            console.log(error);
-          });
+            
+            addedUser(user,setloading,navigate,token)
+            
+          })
+          
       })
       .catch((error) => {
         const errorMessage = error.message;

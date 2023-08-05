@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/summervision.png'
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';

@@ -59,7 +59,7 @@ const AuthProviders = ({ children }) => {
                 // })
                 axiosSecure.post('/jwt',{email: currentUser.email})
                 .then(res => {
-                    console.log(res.data)
+                    
                     localStorage.setItem('access-token',res.data.token)
                     setToken(res.data.token)
                     setloading(false)

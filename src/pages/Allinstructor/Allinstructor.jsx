@@ -8,9 +8,9 @@ const Allinstructor = () =>{
     const [axiosSecure] = useAxios()
     const[instructors,setInstructors] = useState([])
     useEffect(() =>{
-        axiosSecure('/populer-coaches')
+        axiosSecure.get('/populer-coaches')
         .then(data => setInstructors(data.data))
-    },[])
+    },[axiosSecure])
 
     return (
        <div>
