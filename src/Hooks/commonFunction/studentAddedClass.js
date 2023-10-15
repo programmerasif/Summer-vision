@@ -3,7 +3,8 @@ import Swal from "sweetalert2";
 export const studentAddedClass = async (seclectedClass,token,id) => {
     
 
-    const url = `http://localhost:5000/selectedClass/${id}`;
+    // const url = `http://localhost:5000/selectedClass/${id}`;
+    const url = `https://project-summer-5h81.vercel.app/selectedClass/${id}`;
     const headers = {
       "Content-Type": "application/json", 
       "Authorization": `Bearer ${token}`, 

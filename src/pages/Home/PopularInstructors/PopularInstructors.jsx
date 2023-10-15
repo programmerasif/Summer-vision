@@ -19,7 +19,7 @@ const PopularInstructors = () => {
                 subHeading='our Instructors can help you to improve your skills and the committed to get you the pinnacle of success'
             >
             </HeadingTitle>
-            <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-5 justify-center items-center ">
+            <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 justify-center items-center ">
                 {
                     instructors.map(data => <CoachesCard key={data._id} data={data} />)
                 }

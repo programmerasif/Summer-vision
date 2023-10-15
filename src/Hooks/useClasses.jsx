@@ -8,7 +8,7 @@ const useClasses = () => {
     const [axiosSecure] = useAxios()
    
     
-    const { refetch, data: clas = []  } = useQuery({
+    const { refetch, data: clas = [],isLoading  } = useQuery({
         queryKey: ['class'],
         enabled: true,
         queryFn: async () =>{
@@ -19,7 +19,7 @@ const useClasses = () => {
         }
       })
       
-      return [clas, refetch]
+      return [clas, refetch,isLoading]
 };
 
 export default useClasses;

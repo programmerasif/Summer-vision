@@ -1,17 +1,13 @@
-import { motion } from "framer-motion"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ClassCard = ({ data }) => {
 
   return (
 
     <>
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 1.1 }}
-      drag="x"
-      dragConstraints={{ left: -100, right: 100 }}
-    >
-      <div className="card card-compact md:w-96 sm:w-auto bg-base-100 shadow-xl ">
+    
+      <div data-aos="zoom-in-up" className="card card-compact lg:w-96 md:w-80 sm:w-auto mx-auto bg-gray-100">
       <figure><img src={data.image} alt="Shoes" className="h-60" /></figure>
       <div className="card-body">
         <h2 className="card-title">{data.category}</h2>
@@ -20,7 +16,7 @@ const ClassCard = ({ data }) => {
         <p>Type : {data.data} </p>
       </div>
     </div>
-    </motion.div>
+    
     
     </>
 

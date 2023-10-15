@@ -12,29 +12,29 @@ const SuccesfulStudent = () => {
             <Marquee>
                 
              
-                <div className="card card-compact w-96 h-72 bg-base-100 shadow-xl me-20">
-                 <figure><img src={pic1} alt="Shoes" /></figure>
+                <div className="card card-compact w-60  h-56 md:w-96 md:h-72 bg-gray-100 me-8 md:me-20">
+                 <figure><img src={pic1} alt="player" /></figure>
                     <div className="card-body">
-                       <h2 className="card-title">Tiger Woods</h2>
+                       <h2 className="card-title">Sakib Al Hasan</h2>
                        <p> Profeshional Cricket player</p>
                     </div>
                 </div> 
-                <div className="card card-compact w-96 h-72 bg-base-100 shadow-xl me-24">
-                 <figure><img src={pic2} alt="Shoes" /></figure>
+                <div className="card card-compact w-60  h-56 md:w-96 md:h-72 bg-gray-100  me-8 md:me-20">
+                 <figure><img src={pic2} alt="player" /></figure>
                     <div className="card-body">
                        <h2 className="card-title">Jeoy Jems</h2>
                        <p> Profeshional seiming player</p>
                     </div>
                 </div> 
-                <div className="card card-compact w-96 h-72 bg-base-100 shadow-xl me-24">
-                 <figure><img src={pic4} alt="Shoes" /></figure>
+                <div className="card card-compact w-60  h-56 md:w-96 md:h-72 bg-gray-100 me-8 md:me-20">
+                 <figure><img src={pic4} alt="player" /></figure>
                     <div className="card-body">
                        <h2 className="card-title">Ron Wilmton</h2>
                        <p> Profeshional Basket player</p>
                     </div>
                 </div> 
-                <div className="card card-compact w-96 h-72 bg-base-100 shadow-xl me-20">
-                 <figure><img src={pic3} alt="Shoes" /></figure>
+                <div className="card card-compact w-60  h-56 md:w-96 md:h-72 bg-gray-100 me-8 md:me-20">
+                 <figure><img src={pic3} alt="player" /></figure>
                     <div className="card-body">
                     <h2 className="card-title">Pawl Nixson</h2>
                     <p> Profeshional Golf player</p>

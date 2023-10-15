@@ -40,6 +40,7 @@ const AuthProviders = ({ children }) => {
           })
     }
     const logOut = () => {
+        setloading(true)
         return signOut(auth)
     }
     
@@ -47,16 +48,7 @@ const AuthProviders = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             if (currentUser) {
-                // axios.post(`https://second-serer.vercel.app/jwt`,{email: currentUser.email},{
-                //     headers: {
-                //       'Content-Type': 'application/json', // Set the appropriate Content-Type header
-                //       authorization: `Bearer ${token}`, // Include the token in the Authorization header
-                //       // Add any other custom headers you need for this specific request
-                //     }})
-                // .then(data => {
-                //     console.log(data.data);
-                    
-                // })
+                
                 axiosSecure.post('/jwt',{email: currentUser.email})
                 .then(res => {
                     

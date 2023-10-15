@@ -16,7 +16,8 @@ const useAdmin = () => {
             }
 
             try {
-                const url = `http://localhost:5000/user/admin/${user.email}`;
+                // const url = `http://localhost:5000/user/admin/${user.email}`;
+                const url = `https://project-summer-5h81.vercel.app/user/admin/${user.email}`;
                 const headers = {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,

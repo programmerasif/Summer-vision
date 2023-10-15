@@ -15,10 +15,10 @@ const TopClasses = () => {
     return (
         <>
         
-        <div className="custom-container px-4 mt-28 uppercase">
+        <div className="sm:w-full xl:w-[80%] mx-auto px-4 mt-28 uppercase">
             
             <HeadingTitle subHeading='Our top classes are carefully curated to provide you with the most valuable and relevant training' heading='Out top Classes'/>
-            <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-5 justify-center items-center ">
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 sm:grid-cols-1 gap-12 lg:gap-5 justify-center items-center ">
             {
                 classes.map(data => <ClassCard key={data._id} data={data}/>)
             }

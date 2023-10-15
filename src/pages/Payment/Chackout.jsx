@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProviders';
 import './Chackout.css'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Chackout = ({price,itemId,itemName,countId,image}) => {
@@ -17,16 +18,26 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
     const [processing,setProcessing] = useState(false)
     const [transationId,setTransationId] = useState('')
     const navigate = useNavigate()
-
+    const token = localStorage.getItem('access-token')
     useEffect(() =>{
-        if (price > 0) {
-            axiosSecure.post('/creat-payment',{price})
-        .then(res => {
-            setclientSecret(res.data.clientSecret)
-        })
-        }
+        
+        const url = '/creat-payment';
+
+        const headers = {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        };
+          
+        axiosSecure.post(url, {price}, { headers })
+            .then((response) => {
+                setclientSecret(response.data.clientSecret)
+              console.log('Response:', response.data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
     },[])
-// console.log(countId);
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -94,15 +105,9 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
             }
             axiosSecure.post('/paymentDetils',payment)
             .then(res => {
-                // console.log(res.data);
+                
                 if (res.data.insertedId) {
-                    // Swal.fire({
-                    //     position: 'center',
-                    //     icon: 'success',
-                    //     title: 'Your have successfully complite your Payment',
-                    //     showConfirmButton: false,
-                    //     timer: 1500
-                    //   })
+                    
                     Swal.fire(
                         'Payment succesfull',
                         'Thank you for purchaseing',
@@ -145,7 +150,7 @@ const Chackout = ({price,itemId,itemName,countId,image}) => {
                     },
                 }}
             /></div>
-            <button className='w-[32%] mx-auto btn bg-gray-400' type="submit" disabled={!stripe || !clientSecret || processing}>
+            <button className='w-[32%] mx-auto btn bg-gray-400' type="submit" >
                 Pay
             </button>
         </form>

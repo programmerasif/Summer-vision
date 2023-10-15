@@ -46,15 +46,15 @@ setShowPassword(!showpasword)
 }
  
   return (
-    <div>
+    <div className=" ">
       
-      <div className="hero min-h-screen bg-base-200 relative">
+      <div className="hero  ">
       
         <div className="hero-content flex-col lg:flex-row gap-20 mt-20">
           <div className="text-center lg:text-left md:w-[700px] sm:[w-200px]">
             <Lottie animationData={loginAnemation} loop={true} />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
 
               <div className="form-control">
@@ -92,9 +92,7 @@ setShowPassword(!showpasword)
         </div>
 
       </div>
-      <div className="absolute md:-bottom-0 ">
-        <Weve></Weve>
-      </div>
+      
     </div>
   );
 };

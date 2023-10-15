@@ -15,7 +15,9 @@ const useInstructor = () => {
             }
 
             try {
-                const url = `http://localhost:5000/user/instructors/${user?.email}`; // Corrected the endpoint URL
+           
+                // const url = `http://localhost:5000/user/instructors/${user?.email}`; 
+                const url = `https://project-summer-5h81.vercel.app/user/instructors/${user?.email}`; 
                 const headers = {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,

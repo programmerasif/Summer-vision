@@ -9,9 +9,9 @@ const useAxios = () => {
     // const navigate = useNavigate(); 
   
     const axiosSecure = axios.create({
-      baseURL: 'http://localhost:5000/', 
+      // baseURL: 'http://localhost:5000/', 
       // baseURL: 'https://summer-vision.vercel.app/', 
-      // baseURL: 'https://project-summer-5h81.vercel.app/', //for back up 
+      baseURL: 'https://project-summer-5h81.vercel.app/', //for back up 
       
     });
  

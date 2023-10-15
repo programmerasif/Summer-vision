@@ -1,0 +1,6 @@
+.footerImg{
+    background-image: url('../../assets/footer.png');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

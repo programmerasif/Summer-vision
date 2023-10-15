@@ -9,10 +9,11 @@ const useUser = () => {
         queryKey: ['isUser', user?.email],
         enabled: !loading || !isUser,
         queryFn: async () => {
-            const url = `http://localhost:5000/user/user/${user?.email}`; // Replace with the actual API endpoint
+            const url = `https://project-summer-5h81.vercel.app/user/user/${user?.email}`; 
+            // const url = `http://localhost:5000/user/user/${user?.email}`; 
             const headers = {
-                "Content-Type": "application/json", // Replace with the appropriate content type
-                "Authorization": `Bearer ${token}`, // Optional, if you need an authorization header
+                "Content-Type": "application/json", 
+                "Authorization": `Bearer ${token}`, 
               };
             const response = await fetch(url, {
                 method: 'GET', 

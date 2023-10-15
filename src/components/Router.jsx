@@ -19,7 +19,7 @@ import AdminRouts from "../Routs/AdminRouts";
 import InstructorRout from "../Routs/InstructorRout";
 import ErrorPage from "./ErrorPage";
 import SuccesfulStudent from "../pages/Home/SuccesfullStudent/SuccesfulStudent";
-import Connect from "../pages/Home/Connect/Connect";
+
 
 
 
@@ -54,10 +54,6 @@ export const router = createBrowserRouter([
         {
           path:'succesfullStudent',
           element: <SuccesfulStudent />
-        },
-        {
-          path:'connect',
-          element: <Connect />
         }
         
       ]

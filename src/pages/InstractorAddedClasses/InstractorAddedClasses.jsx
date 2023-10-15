@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProviders';
 import useAxios from '../../Hooks/useAxios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import HeadingTitle from '../../components/Share/HeadingTitle';
 
 const InstractorAddedClasses = () => {
     const { user } = useContext(AuthContext)
@@ -42,10 +43,9 @@ const InstractorAddedClasses = () => {
 
     }
     return (
-        <div className='bg-img w-full'>
+        <div className=' w-full'>
+            <HeadingTitle heading='Added your new classes' />
             <form onSubmit={handleSubmit(onSubmit)} className="w-full mx-auto md:w-[80%] sm:w-full mb-8 bg-gray-200 p-8">
-
-
 
                 <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 px-2 mt-8 mb-8">
                     <div>
@@ -86,7 +86,7 @@ const InstractorAddedClasses = () => {
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <input type="text" placeholder="Price" className="input input-bordered w-full" {...register("price")} />
+                        <input type="number" placeholder="Price" className="input input-bordered w-full" {...register("price")} />
                     </div>
                 </div>
 

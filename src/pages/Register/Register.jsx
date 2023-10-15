@@ -8,14 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import Weve from "../Home/Marketing/Weve";
 import SocialLogin from "../../components/Share/SocialLogin";
 import Swal from "sweetalert2";
-import useAxios from "../../Hooks/useAxios";
-import axios from "axios";
+
+
 import { addedUser } from "../../Hooks/commonFunction/addedUser";
 
 const Register = () => {
   const { user, signUp, profileUpdate,setloading } = useContext(AuthContext)
   const [conPass,setConpass] =useState(true)
-  const [axiosSecure] = useAxios()
+
   const navigate = useNavigate()
 
   const token = localStorage.getItem('access-token')
@@ -58,16 +58,20 @@ const Register = () => {
 
 
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200 relative">
-        <div className="hero-content flex-col lg:flex-row gap-20 mt-20 mb-32">
+    <>
+
+       <div className="grid sm:grid-flow-col md:grid-cols-2 sm:w-full md:w-[90%] mx-auto justify-center items-center mt-32">
+          {/* left for lotti */}
           <div className="text-center lg:text-left md:w-[700px] sm:[w-200px]">
             <Lottie animationData={loginAnemation} loop={true} />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
 
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
-              <div className="form-control">
+          {/* right for form */}
+
+          <div>
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
+             <div className="grid grid-cols-2 w-full gap-6">
+             <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
@@ -89,9 +93,7 @@ const Register = () => {
                 {errors.password && <span className="text-red-500">Password is required</span>}
                 {errors.password?.type == 'minLength' && <span className="text-red-500">Password should be 6 character</span>}
                 {errors.password?.type == 'pattern' && <span className="text-red-500">Password must have one Uppercase one lower case, one number and one special character.</span>}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Password?</a>
-                </label>
+                
               </div>
               <div className="form-control">
                 <label className="label">
@@ -100,20 +102,24 @@ const Register = () => {
                 <input type="password" {...register("confirmPass", { required: true })} placeholder="password" className="input input-bordered" />
                 {errors.confirmPass && <span className="text-red-500">Password is required</span>}
                 {!conPass && <p className="text-red-500">Password and Confirm password are not same </p>}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Confirm password?</a>
-                </label>
+                
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
-                <input type="text" {...register("photoUrl", { required: true })} placeholder="password" className="input input-bordered" />
+                <input type="text" {...register("photoUrl", { required: true })} placeholder="Photo URL" className="input input-bordered" />
                 {errors.photoUrl && <span className="text-red-500">Photo URL is required</span>}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Photo?</a>
-                </label>
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Designation</span>
+                </label>
+                <input type="text" {...register("Designation", { required: true })} placeholder="Designation" className="input input-bordered" />
+                
+              </div>
+             </div>
+
               <div className="form-control mt-6">
                 <input type="submit" value="Register" className="btn" />
               </div>
@@ -121,13 +127,10 @@ const Register = () => {
             </form>
             <SocialLogin ></SocialLogin>
           </div>
-
-        </div>
-        <div className="absolute bottom-0">
-          <Weve></Weve>
-        </div>
-      </div>
-    </div>
+       </div>
+          
+      
+    </>
   );
 };
 

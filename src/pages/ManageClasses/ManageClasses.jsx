@@ -1,5 +1,4 @@
 import {useState } from "react";
-import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import HeadingTitle from "../../components/Share/HeadingTitle";
 import { authorization } from "../../Hooks/commonFunction/authorize";
@@ -12,9 +11,9 @@ const ManageClasses = () => {
   const token = localStorage.getItem('access-token')
   const { refetch, data: panding = [] } = useQuery({
     queryKey: ['Myclass'], queryFn: async () => {
-      // const res = await axiosSecure.get('/notApproveClasses')
-      // return res.data
-      const url = `http://localhost:5000/notApproveClasses`; 
+      
+      // const url = `http://localhost:5000/notApproveClasses`; 
+      const url = `https://project-summer-5h81.vercel.app/notApproveClasses`; 
             const headers = {
                 "Content-Type": "application/json", 
                 "Authorization": `Bearer ${token}`, 
@@ -22,15 +21,15 @@ const ManageClasses = () => {
             const response = await fetch(url, {
                 method: 'GET', 
                 headers: headers,
+                
               });
 
               const data = await response.json();
-            console.log(data);
+            
             return data
     }
   })
 
-console.log(panding);
 
   const approve = (id) => {
   const item = {
@@ -58,7 +57,7 @@ console.log(panding);
 
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full mb-8">
       <HeadingTitle heading='manage classes' />
     {/* The button to open modal */}
 
@@ -88,51 +87,45 @@ console.log(panding);
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
-              <th className="">
+            <tr className="">
+              <th className="hidden md:table-cell">
                 #
               </th>
               <th className="hidden sm:hidden md:block">Image</th>
-              <th>Name</th>
+              <th className="hidden md:table-cell">Name</th>
               <th>Instructor Name</th>
-              <th>Instructor Email</th>
-              <th>Total Enrolled</th>
-              <th>Statas</th>
-              <th>Feedback</th>
+              <th className="hidden md:table-cell">Instructor Email</th>
+              <th className="hidden md:table-cell">Total Enrolled</th>
+              <th className="hidden md:table-cell">Statas</th>
+              <th className="hidden md:table-cell">Feedback</th>
               <th>Action</th>
               <th>Action</th>
-            
-              <th></th>
             </tr>
           </thead>
           <tbody>
             {
               panding.map((item, i) => <tr key={item._id}>
-                <th className="">
+                <th className="hidden md:table-cell">
                   {1 + i}
                 </th>
-                <td className="hidden sm:hidden md:block">
-
-                  <div className="flex items-center space-x-3">
+                <td className="hidden md:table-cell">
+                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img src={item.image} alt="Avatar Tailwind CSS Component" />
                       </div>
                     </div>
                   </div>
-
-
-
                 </td>
-                <td className="text-start">
+                <td className="text-start hidden md:table-cell">
                   {item.name}
 
                 </td>
                 <td className="text-start">{item.trainerName}</td>
-                <td className="text-start">{item.email}</td>
-                <td className="text-start">0</td>
-                <td className="text-start">{item.approve}</td>
-                <td className="text-start">
+                <td className="text-start hidden md:table-cell">{item.email}</td>
+                <td className="text-start hidden md:table-cell">0</td>
+                <td className="text-start hidden md:table-cell">{item.approve}</td>
+                <td className="text-start hidden md:table-cell">
                   {/* The button to open modal */}
                   <label htmlFor="my_modal_6" className="btn btn-sm">Give Feedback</label>
                 </td>

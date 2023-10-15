@@ -5,7 +5,11 @@
 
 body{
     font-family: 'Montserrat', sans-serif;
+    background-color: #FFFFFF;
 }
 .custom-container {
     @apply  md:w-[80%] sm:w-full mx-auto
+  }
+  .primary-button {
+    @apply bg-[#FFBF23] px-5 py-3 rounded-md font-semibold text-white hover:bg-white hover:text-[#FFBF23] hover:ring-2 hover:ring-[#FFBF23] duration-300 hover:drop-shadow-md;
   }

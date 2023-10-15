@@ -1,0 +1,8 @@
+.banner{
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.119), rgba(69, 68, 69, 0.73)),
+    url('../../assets/videoBanner2.png');
+    height: 60vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

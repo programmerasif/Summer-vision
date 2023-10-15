@@ -1,7 +1,8 @@
 export const authorization = async (item,id,token,refetch) => {
     
 
-    const url = `http://localhost:5000/addedClass/${id}`;
+    // const url = `http://localhost:5000/addedClass/${id}`;
+    const url = `https://project-summer-5h81.vercel.app/addedClass/${id}`;
     const headers = {
       "Content-Type": "application/json", 
       "Authorization": `Bearer ${token}`, 

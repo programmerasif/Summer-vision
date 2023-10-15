@@ -35,7 +35,7 @@ const SocialLogin = () => {
   }
 
   return (
-    <div className='w-full p-3 pb-5'>
+    <div className='w-[95%] mx-auto p-3 pb-5'>
       <div className="divider">OR</div>
       <button className="btn w-full " onClick={handelGoogleLogin}> <span className="text-3xl"><FcGoogle /></span> Google</button>
     </div>

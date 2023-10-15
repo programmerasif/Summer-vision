@@ -1,9 +1,12 @@
 import logo from '../../assets/summervision.png'
+import Weve from '../Home/Marketing/Weve';
 
 const Footer = () => {
     return (
         <>
-            <footer className="footer p-10 bg-[#FFBF23] text-base-content">
+        <div>
+            <Weve></Weve>
+        <footer className="footer p-10 bg-[#FFBF23] text-base-content">
                 <div className="items-center grid-col">
                     <img src={logo} alt=""  className='w-24'/>
                     <p>Summer-vision. <br />Providing reliable Traning since 2020</p>
@@ -38,6 +41,8 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+        </div>
+            
         </>
     );
 };

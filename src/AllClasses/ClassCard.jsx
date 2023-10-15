@@ -39,7 +39,7 @@ const ClassCard = ({ data }) => {
     return (
         <div className="">
 
-            <div className={`card card-compact md:w-96 sm:w-auto  shadow-xl ${!data.availableSeats == 0 ? 'bg-base-100' : 'bg-red-300 text-white'}`}>
+            <div className={`card card-compact md:w-80 lg:w-[320px] 2xl:w-96 sm:w-auto mx-auto shadow-sm ${!data.availableSeats == 0 ? 'bg-gray-100' : 'bg-red-300 text-white'}`}>
                 <figure><img src={data.image} alt="sports" className="h-60" /></figure>
                 <div className="card-body">
                     <h2 className="card-title"> Name : {data.name}</h2>

@@ -4,7 +4,8 @@ export const addedUser = async (user,setloading,navigate,token) => {
     // sending all users data into data base
     const person = { name: user?.displayName, email: user?.email, role: 'user' };
 
-    const url = `http://localhost:5000/user/${user.email}`;
+    const url = `https://project-summer-5h81.vercel.app/user/${user.email}`;
+    // const url = `http://localhost:5000/user/${user.email}`;
     const headers = {
       "Content-Type": "application/json", 
       "Authorization": `Bearer ${token}`, 
@@ -23,11 +24,10 @@ export const addedUser = async (user,setloading,navigate,token) => {
       return response.json();
     })
     .then(data => {
-      console.log("Post request successful!");
-      console.log(data); // If the server returns JSON response
-
-      setloading(false); // Set loading state to false after the request is complete
+      if (data) {
+        setloading(false); // Set loading state to false after the request is complete
       navigate('/');
+      }
     })
     .catch(error => {
       console.error("Post request failed:");
